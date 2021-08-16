@@ -1,0 +1,480 @@
+{% render 'gdc-hero-split' %} 
+ 
+{% schema %}
+{
+  "name": "GDC: Hero Split", 
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings" 
+    },
+    {
+      "type": "range",
+      "id": "t_margin",
+      "label": "Section Top Margin",
+      "default": 0,
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px" 
+    },
+    {
+      "type": "range",
+      "id": "b_margin",
+      "label": "Section Bottom Margin",
+      "default": 0,
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "hero_height",
+      "label": "Section Height",
+      "default": 500,
+      "min": 250,
+      "max": 750,
+      "step": 10,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "bg_color_left",
+      "label": "Background Color Left",
+      "default": "#ededed"
+    },
+    {
+      "type": "color",
+      "id": "bg_color_right",
+      "label": "Background Color Right",
+      "default": "#fafafa"
+    },
+    {
+      "type": "header",
+      "content": "Image Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image_containers",
+      "default": false,
+      "label": "Show Image Containers",
+      "info": "For visualizing how the image can be moved around container. The image can only be moved in a direction where there is space between the image and the dotted line."
+    },
+    {
+      "type": "header",
+      "content": "Left Image Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_one",
+      "label": "Left Image"
+    },
+    {
+      "type": "range",
+      "id": "image_left_height",
+      "label": "Image Left Container Height",
+      "default": 100,
+      "min": 50,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "image_left_width",
+      "label": "Image Left Container Width",
+      "default": 100,
+      "min": 50,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "select",
+      "id": "image_left_fit",
+      "default": "cover",
+      "options": [
+         { "value": "cover", "label": "Cover"},
+         { "value": "contain", "label": "Contain"}
+      ],
+      "label": "Left Image Fit"    
+    },
+    {
+      "type": "range",
+      "id": "image_left_h_pos",
+      "label": "Image Left Horizontal Position",
+      "default": 50,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "image_left_v_pos",
+      "label": "Image Left Vertical Position",
+      "default": 50,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "image_left_opacity",
+      "label": "Image Left Opacity",
+      "default": 1.0,
+      "min": 0,
+      "max": 1.0,
+      "step": 0.1
+    },
+    {
+      "type": "header",
+      "content": "Right Image Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_two",
+      "label": "Right Image"
+    },
+    {
+      "type": "range",
+      "id": "image_right_height",
+      "label": "Image Right Container Height",
+      "default": 100,
+      "min": 50,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "image_right_width",
+      "label": "Image Right Container Width",
+      "default": 100,
+      "min": 50,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "select",
+      "id": "image_right_fit",
+      "default": "cover",
+      "options": [
+         { "value": "cover", "label": "Cover"},
+         { "value": "contain", "label": "Contain"}
+      ],
+      "label": "Right Image Fit"    
+    },
+    {
+      "type": "range",
+      "id": "image_right_h_pos",
+      "label": "Image Right Horizontal Position",
+      "default": 50,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "image_right_v_pos",
+      "label": "Image Right Vertical Position",
+      "default": 50,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "image_right_opacity",
+      "label": "Image Right Opacity",
+      "default": 1.0,
+      "min": 0,
+      "max": 1.0,
+      "step": 0.1
+    },
+    {
+      "type": "header",
+      "content": "Text Settings"
+    },
+    {
+      "type": "header",
+      "content": "Left Text Settings"  
+    },
+    {
+      "type": "range",
+      "id": "left_text_width",
+      "label": "Left Text Width",
+      "default": 100,
+      "min": 30,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "select",
+      "id": "left_text_h_pos",
+      "default": "center",
+      "options": [
+         { "value": "start", "label": "Left"},
+         { "value": "center", "label": "Center"},
+         { "value": "flex-end", "label": "Right"}
+      ],
+      "label": "Text Horizontal Position"    
+    },
+    {
+      "type": "select",
+      "id": "left_text_v_pos",
+      "default": "center",
+      "options": [
+         { "value": "start", "label": "Top"},
+         { "value": "center", "label": "Center"},
+         { "value": "flex-end", "label": "Bottom"} 
+      ],
+      "label": "Text Vertical Position" 
+    },
+    {
+      "type": "range",
+      "id": "left_text_margin",
+      "label": "Text Area Margin",
+      "default": 0,
+      "min": 0,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "info": "Adds extra blank space around the text element so that it does not sit against the edge of the section."
+    },
+    {
+      "type": "color",
+      "id": "left_text_color",
+      "label": "Text color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "left_text_bg_color",
+      "label": "Text Background color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "left_bg_opacity",
+      "label": "Text Background Opacity",
+      "default": 90,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "select",
+      "id": "left_text_align",
+      "options": [
+         { "value": "left", "label": "Left"},
+         { "value": "center", "label": "Center"},
+         { "value": "right", "label": "Right"}
+      ],
+      "label": "Text Alignment" 
+    },
+    {
+      "type": "text",
+      "id": "left_title",
+      "label": "Title"
+    }, 
+    {
+      "type": "range",
+      "id": "left_title_size",
+      "label": "Title Font Size",
+      "default": 36,
+      "min": 16,
+      "max": 116,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "text",
+      "id": "left_subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "range",
+      "id": "left_subtitle_size",
+      "label": "Subtitle Font Size",
+      "default": 24,
+      "min": 14,
+      "max": 114,
+      "step": 1,
+      "unit": "px" 
+    },
+    {
+      "type": "richtext",
+      "id": "left_text",
+      "label": "Rich Text"
+    },
+    {
+      "type": "range",
+      "id": "left_text_size",
+      "label": "Text Font Size",
+      "default": 16,
+      "min": 9,
+      "max": 48,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "text",
+      "id": "left_btn_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "left_btn_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "header",
+      "content": "Right Text Settings"
+    },
+    {
+      "type": "range",
+      "id": "right_text_width",
+      "label": "Right Text Width",
+      "default": 100,
+      "min": 30,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "select",
+      "id": "right_text_h_pos",
+      "default": "center",
+      "options": [
+         { "value": "start", "label": "Left"},
+         { "value": "center", "label": "Center"},
+         { "value": "flex-end", "label": "Right"}
+      ],
+      "label": "Text Horizontal Position"    
+    },
+    {
+      "type": "select",
+      "id": "right_text_v_pos",
+      "default": "center",
+      "options": [
+         { "value": "start", "label": "Top"},
+         { "value": "center", "label": "Center"},
+         { "value": "flex-end", "label": "Bottom"}
+      ],
+      "label": "Text Vertical Position" 
+    },
+    {
+      "type": "range",
+      "id": "right_text_margin",
+      "label": "Text Area Margin",
+      "default": 0,
+      "min": 0,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "info": "Adds extra blank space around the text element so that it does not sit against the edge of the section."
+    },
+    {
+      "type": "color",
+      "id": "right_text_color",
+      "label": "Text color",
+      "default": "#000"
+    },
+    {
+      "type": "color",
+      "id": "right_text_bg_color",
+      "label": "Text Background color",
+      "default": "#fff"
+    },
+    {
+      "type": "range",
+      "id": "right_bg_opacity",
+      "label": "Text Background Opacity",
+      "default": 90,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "select",
+      "id": "right_text_align",
+      "options": [
+         { "value": "left", "label": "Left"},
+         { "value": "center", "label": "Center"},
+         { "value": "right", "label": "Right"}
+      ],
+      "label": "Text Alignment" 
+    },
+    {
+      "type": "text",
+      "id": "right_title",
+      "label": "Title"
+    },
+    {
+      "type": "range",
+      "id": "right_title_size",
+      "label": "Title Size",
+      "default": 36,
+      "min": 16,
+      "max": 116,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "text",
+      "id": "right_subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "range",
+      "id": "right_subtitle_size",
+      "label": "Subtitle Size",
+      "default": 24,
+      "min": 14,
+      "max": 114,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "richtext",
+      "id": "right_text",
+      "label": "Rich Text"
+    },
+    {
+      "type": "range",
+      "id": "right_text_size",
+      "label": "Text Size",
+      "default": 16,
+      "min": 9,
+      "max": 48,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "text",
+      "id": "right_btn_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "right_btn_url",
+      "label": "Button URL" 
+    }
+  ],
+  "presets": [
+    {
+      "name": "GDC: Hero Split",
+      "category": "GDC Custom Components" 
+    }
+  ]
+}
+{% endschema %}

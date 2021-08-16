@@ -1,0 +1,47 @@
+{%- assign ss = section.settings -%}
+
+<section class="gdc-logo-list-text__wrapper section--{{ section.id }}">
+  <div class="gdc-logo-list-text">
+
+      {% render 'gdc-section-paragraph', section: section %}
+
+      {% if ss.btn_text != blank %}
+        <div class="gdc-centered-row">
+          <a class="button gdc-logo-list__btn" 
+            href="{{ ss.btn_url }}">
+          {{ ss.btn_text }}
+          </a>
+        </div>
+      {% endif %}
+
+  </div>
+
+  <div class="gdc-logo-list-simple__wrapper">
+    {% render 'gdc-block-logo-list-simple' section: section %} 
+  </div>
+
+</section>
+
+<style>
+  .gdc-logo-list-text__wrapper.section--{{ section.id }} {
+    background: url({{ ss.image | img_url: "large"}})  no-repeat center center {% if ss.enable_parallax %}fixed{% endif %};
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin-top: {{ ss.t_margin }}px;
+    margin-bottom: {{ ss.b_margin }}px;
+    padding-top: {{ ss.t_padding }}px;
+    padding-bottom: {{ ss.b_padding }}px;
+  }
+
+  .gdc-logo-list__btn {
+    {% if  ss.btn_color != "rgba(0,0,0,0)" %}
+      background: {{ ss.btn_color }}; 
+    {% endif %}
+    {% if  ss.btn_text_color != "rgba(0,0,0,0)" %}
+      color: {{ ss.btn_text_color }}; 
+    {% endif %}
+    box-shadow: none;
+  }
+</style>

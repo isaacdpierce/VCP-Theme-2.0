@@ -1,0 +1,66 @@
+{% comment %}
+Settings for schema:
+      {
+        "type": "text", 
+        "id": "title",
+        "label": "Section Title" 
+      },
+      {
+        "type": "checkbox",
+        "id": "title_line",
+        "label": "Underline Title",
+        "default": false
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "Section Subtitle"
+      },
+      {
+        "type": "select",
+        "id": "text_align",
+        "options": [
+           { "value": "left", "label": "Left"},
+           { "value": "center", "label": "Center"},  
+           { "value": "right", "label": "Right"}
+        ],
+        "label": "Section Text alignment"
+      },
+      {
+        "type": "color",
+        "id": "font_color",
+        "label": "Section Font color",
+        "default": "#000"
+      }
+{% endcomment %}
+
+{% if section.settings.title != blank or section.settings.text != blank %}
+  <header class="gdc-section-header section--{{ section.id }}">
+    {% if section.settings.title %}
+      <h2 class="gdc-section-header__title section--{{ section.id }}">{{ section.settings.title }}</h2>
+    {% endif %}
+    {% if section.settings.text %}
+      <p class="gdc-section-header__text section--{{ section.id }}">{{ section.settings.text }}</p>
+    {% endif %}
+  </header>
+{% endif %}
+
+<style>
+  .gdc-section-header__title.section--{{ section.id }}, 
+  .gdc-section-header.section--{{ section.id }} p {
+    color: {{ section.settings.font_color }};
+  } 
+
+  .gdc-section-header__title.section--{{ section.id }}  {
+    {% if section.settings.title_line %}
+      margin-bottom: 40px;
+      padding-left: 20px;
+      padding-right: 20px;
+      border-bottom: 1px solid {{ section.settings.font_color }}50;
+    {% endif %}
+  }
+
+  .gdc-section-header.section--{{ section.id }} p {
+    text-align: {{ section.settings.text_align }};
+  }
+</style>

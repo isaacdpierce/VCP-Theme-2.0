@@ -1,0 +1,175 @@
+{% comment %}
+  USING alpine.js https://alpinejs.dev/start-here
+{% endcomment %}
+
+<section class="gdc-accordion__section section--{{ section.id }}">
+  <div class="gdc-accordion__wrapper section--{{ section.id }}">
+    {%- for block in section.blocks -%}
+    {% if block.type == 'accordion_section' %}
+    
+    <div x-data="{ open: false }">
+      <div class="gdc-accordion__button section--{{ section.id }}" @click="open = ! open">
+        <span  class="gdc-accordion__indicator section--{{ section.id }}" x-show="open">
+          {% render 'icon-minus-2' color: "#72C5DA" %}
+        </span>
+        <span  class="gdc-accordion__indicator section--{{ section.id }}" x-show="!open">
+          {% render 'icon-plus-2' color: "#72C5DA" %}
+        </span>
+        <h2 class="gdc-accordion__title section--{{ section.id }}">{{ block.settings.title }}</h2>
+      </div>
+      
+      <div class="gdc-accordion__contents section--{{ section.id }}" x-show="open">
+        {{ block.settings.content }}
+      </div>
+    </div>
+    {%- endif -%}
+    {% endfor %}
+  </div>
+</section>
+
+<style>
+  .gdc-accordion__section.section--{{ section.id }} {
+    margin-top: {{ section.settings.t_margin }}px;
+    margin-bottom: {{ section.settings.b_margin }}px;
+    padding-top: {{ section.settings.v_padding }}px;
+    padding-bottom: {{ section.settings.v_padding }}px;
+    background-color: {{ section.settings.bg_color }};
+  }
+
+  .gdc-accordion__wrapper {
+    width: 900px;
+    max-width: 90vw;
+    margin: 0 auto;
+  }
+
+  .gdc-accordion__button {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    
+  }
+
+  .gdc-accordion__indicator.section--{{ section.id }} {
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    fill: {{ section.settings.ind_color }};
+  }
+
+  .gdc-accordion__title.section--{{ section.id }} {
+    flex-grow: 1;
+    border-bottom: 1px solid #999;
+    color: {{ section.settings.tab_text_color }};
+    background-color: {{ section.settings.tab_color }};
+    padding: 10px;
+  }
+
+  .gdc-accordion__contents {
+    padding-left: 40px;
+  }
+
+  .gdc-accordion__contents.section--{{ section.id }} p {
+    margin: 0 0 5px 0!important;
+    color: {{ section.settings.content_text_color }};
+  }
+
+  .gdc-accordion__contents.section--{{ section.id }} p:last-of-type {
+    padding-bottom: 40px;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "GDC: Accordion",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Accordion Style Settings"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#fefefe"
+    },
+    {
+      "type": "range",
+      "id": "t_margin",
+      "label": "Section Top Margin",
+      "default": 0,
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px" 
+    },
+    {
+      "type": "range",
+      "id": "b_margin",
+      "label": "Section Bottom Margin",
+      "default": 0,
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "v_padding",
+      "label": "Section Vertical Padding",
+      "default": 0,
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px" 
+    },
+    {
+      "type": "color",
+      "id": "ind_color",
+      "label": "Indicator Color"
+    },
+    {
+      "type": "color",
+      "id": "tab_color",
+      "label": "Tab Color"
+    },
+    {
+      "type": "color",
+      "id": "tab_text_color",
+      "label": "Tab Font Color"
+    },
+    {
+      "type": "color",
+      "id": "content_text_color",
+      "label": "Content Color"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "accordion_section",
+      "name": "Accordion Section",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "default": "Title", 
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "default": "<p>Content...</p>",  
+          "label": "Content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "GDC: Accordion",
+      "category": "GDC Custom Components"
+    }
+  ]
+}
+{% endschema %}

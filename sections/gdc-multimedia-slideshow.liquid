@@ -1,0 +1,597 @@
+{%- assign ss = section.settings -%}
+
+<section class="gdc-slideshow__section section--{{ section.id }}">
+
+  {% if ss.title != blank %}
+    <header class="gdc-section-header--center">
+      <h2>{{ ss.title }}</h2>
+    </header>
+  {% endif %}
+
+  <div class="gdc-slideshow__wrapper section--{{ section.id }}">
+    {% assign block_index = 0 %}
+    {% for block in section.blocks %}
+      {% assign block_index = block_index | plus: 1 %}
+      {%- case block.type -%}
+       {%- when 'slide_image' -%}
+         {%- render 'gdc-block-slide-image-text', block: block ss: ss, block_index: block_index -%}
+       {%- when 'slide_video' -%}
+         {%- render 'gdc-block-slide-video-text', block: block, ss: ss, block_index: block_index -%}
+      {% endcase %} 
+    {% endfor %}
+  </div>
+
+    <div class="gdc-slideshow__buttons">
+      <div class="gdc-slideshow__button button-back" onclick="return handleSlideButtonClick(event)">
+        {% render 'icon-chevron-left'%}
+      </div>
+      <div class="gdc-slideshow__button button-forward" onclick="return handleSlideButtonClick(event)">
+        {% render 'icon-chevron-right'%}
+      </div>
+    </div>
+</section>
+
+<script>
+  function handleSlideButtonClick(e) {
+    const slidesArray = document.querySelectorAll("[data-slide]");
+    const firstElement = slidesArray[0];
+    const lastElement = slidesArray[slidesArray.length - 1];
+
+    let currentActiveSlide
+    let currentSlideIndex
+
+    slidesArray.forEach((slide, index) => {
+      if (slide.classList.contains("gdc-slide-active")) {
+        currentActiveSlide = slide
+        currentSlideIndex = index
+      }
+    })
+
+    currentActiveSlide.classList.remove("gdc-slide-active")
+
+    if (e.target.classList.contains("button-back")) {
+      if (currentSlideIndex > 0) {
+        // Add active class to previous element in slidesArray
+        slidesArray[currentSlideIndex - 1].classList.add("gdc-slide-active")
+      } else {
+        // Add active class to last element in slidesArray
+        lastElement.classList.add("gdc-slide-active")
+      }
+    }
+
+    if (e.target.classList.contains("button-forward")) {
+      if (currentSlideIndex < slidesArray.length - 1) {
+        // Add active class to previous element in slidesArray
+        slidesArray[currentSlideIndex + 1].classList.add("gdc-slide-active")
+      } else {
+        // Add active class to first element in slidesArray
+        firstElement.classList.add("gdc-slide-active")
+      }
+    }
+  }
+</script>
+
+<style>
+  .gdc-slideshow__section.section--{{ section.id }} {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: {{ ss.t_margin }}px;
+    margin-bottom: {{ ss.b_margin }}px;
+    padding-top: {{ ss.t_padding }}px;
+    padding-bottom: {{ ss.b_padding }}px;   
+    background-color: {{ ss.bg_color }};
+  }
+  
+  .gdc-slideshow__wrapper.section--{{ section.id }} {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  .gdc-slideshow__wrapper.section--{{ section.id }} section {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .gdc-slideshow__buttons {
+    display: flex;
+    position: absolute;
+    bottom: -30px;
+    right: 100px;
+  }
+
+  .gdc-slideshow__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 60px;
+    height: 60px;
+    border: 1px solid black;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 2px 6px 3px rgba(0, 0, 0, 0.103);
+    border-radius: 50%;
+    font-size: 30px;
+    border: none;
+  }
+
+  .gdc-slideshow__button:not(:last-of-type) {
+    margin-right: 20px;
+  }
+
+  .gdc-slideshow__button.button-back svg {
+    transform: translateX(-2px);
+  }
+
+  .gdc-slideshow__button svg {
+    pointer-events: none;
+  }
+
+  .gdc-slide {
+    display: none;
+  }
+
+  .gdc-slide.gdc-slide-active {
+    display: block;
+    animation: fadeIn 2s;
+  }
+
+  @keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+
+  @media screen and (max-width: 600px) {
+    .gdc-slideshow__buttons {
+      right: 50%;
+      transform: translateX(50%);
+    }
+  }
+</style>
+
+
+{% schema %}
+{
+  "name": "GDC: Multimedia Slideshow",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"  
+    },
+    {
+      "type": "range",
+      "id": "t_margin",
+      "label": "Section top margin",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "b_margin",
+      "label": "Section bottom margin",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "t_padding",
+      "label": "Top Padding",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "b_padding",
+      "label": "Bottom Padding",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "px"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Slideshow Title",   
+      "default": "Slideshow Title"
+    },
+    {
+      "type": "header",
+      "content": "Slider Settings"  
+    },
+    {
+      "type": "range",
+      "id": "slide_height",
+      "label": "Slide Height",
+      "default": 300,
+      "min": 250,
+      "max": 750,
+      "step": 10,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "slide_width",
+      "label": "Slideshow Width",
+      "default": 100,
+      "min": 50,
+      "max": 100,
+      "step": 10,
+      "unit": "%"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section Background color",
+      "default": "#ffffff"
+    }
+  ],  
+  "blocks": [
+    {
+      "type": "slide_video",
+      "name": "Slide Video",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Video Settings"  
+        },
+        {
+          "type": "html",
+          "id": "iframe",
+          "label": "iframe code snippet"
+        },
+        {
+          "type": "range",
+          "id": "opacity",
+          "label": "Video Opacity",
+          "default": 1,
+          "min": 0,
+          "max": 1,
+          "step": 0.1
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Slide Link"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Slide Image Background color"
+        },
+        {
+          "type": "header",
+          "content": "Text Settings"  
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Slide Title",
+          "default": "Title"
+        }, 
+        {
+          "type": "range",
+          "id": "title_size",
+          "label": "Title Size",
+          "default": 24,
+          "min": 18,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "info": "Desktop only. Will resort to default for mobile screens."
+        },
+        {
+          "type": "richtext", 
+          "id": "text",
+          "label": "Slide text",
+          "default": "<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>"
+        },
+        {
+          "type": "range",
+          "id": "text_width",
+          "label": "Text Width",
+          "default": 900,
+          "min": 100,
+          "max": 900,
+          "step": 10,
+          "unit": "px",
+          "info": "Max width always 90% of screen width." 
+        },
+        {
+          "type": "range",
+          "id": "text_margin",
+          "label": "Margin around text",
+          "default": 0,
+          "min": 0,
+          "max": 4,
+          "step": 1,
+          "unit": "%",
+          "info": "Percentage of screen width." 
+        },
+        {
+          "type": "checkbox",
+          "id": "text_shadow",
+          "default": false,
+          "label": "Enable text shadow"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color"
+        },
+        {
+          "type": "color",
+          "id": "text_bg_color",
+          "label": "Text background color",
+          "default": "#111111"
+        },
+        {
+          "type": "select",
+          "id": "text_bg",
+          "options": [
+            {
+              "value": "none",
+              "label": "None"
+            },
+            {
+              "value": "round",
+              "label": "Round"
+            },
+            {
+              "value": "rectangle",
+              "label": "Rectangle"
+            }
+          ],
+          "default": "none",
+          "label": "Textbox Shape for Text"
+        },
+        {
+          "type": "select",
+          "id": "text_h_position",
+          "options": [
+            {
+              "value": "flex-start",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "flex-end",
+              "label": "Right"
+            }
+          ],
+          "default": "center",
+          "label": "Text Horizontal Position"
+        },
+        {
+          "type": "select",
+          "id": "text_v_position",
+          "options": [
+            {
+              "value": "flex-start",
+              "label": "Top"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "flex-end",
+              "label": "Bottom"
+            }
+          ],
+          "default": "center",
+          "label": "Text Vertical Position"
+        },
+        {
+          "type": "header",
+          "content": "Button Settings"  
+        },
+        {
+          "type": "text", 
+          "id": "btn_text",
+          "label": "Button text",
+          "default": "Button"
+        },
+        {
+          "type": "color",
+          "id": "btn_color",
+          "label": "Button color"
+        }, 
+        {
+          "type": "color",
+          "id": "btn_text_color",
+          "label": "Button Text color"
+        }
+      ]
+    },
+    {
+      "type": "slide_image",
+      "name": "Slide Image",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Image Settings"  
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Slide Image"
+        },
+        {
+          "type": "range",
+          "id": "opacity",
+          "label": "Image Opacity",
+          "default": 1,
+          "min": 0,
+          "max": 1,
+          "step": 0.1
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Slide Link"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Slide Image Background color"
+        },
+        {
+          "type": "header",
+          "content": "Text Settings"  
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Slide Title",
+          "default": "Title"
+        }, 
+        {
+          "type": "richtext", 
+          "id": "text",
+          "label": "Slide text",
+          "default": "<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>"
+        },
+        {
+          "type": "range",
+          "id": "text_width",
+          "label": "Text Width",
+          "default": 900,
+          "min": 100,
+          "max": 900,
+          "step": 10,
+          "unit": "px",
+          "info": "Max width always 90% of screen width."
+        },
+        {
+          "type": "range",
+          "id": "text_margin",
+          "label": "Margin around text",
+          "default": 0,
+          "min": 0,
+          "max": 40,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "type": "checkbox",
+          "id": "text_shadow",
+          "default": false,
+          "label": "Enable text shadow"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color"
+        },
+        {
+          "type": "color",
+          "id": "text_bg_color",
+          "label": "Text background color",
+          "default": "#111111"
+        },
+        {
+          "type": "select",
+          "id": "text_bg",
+          "options": [
+            {
+              "value": "none",
+              "label": "None"
+            },
+            {
+              "value": "round",
+              "label": "Round"
+            },
+            {
+              "value": "rectangle",
+              "label": "Rectangle"
+            }
+          ],
+          "default": "none",
+          "label": "Textbox Shape for Text" 
+        },
+        {
+          "type": "select",
+          "id": "text_h_position",
+          "options": [
+            {
+              "value": "flex-start",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "flex-end",
+              "label": "Right"
+            }
+          ],
+          "default": "center",
+          "label": "Text Horizontal Position"
+        },
+        {
+          "type": "select",
+          "id": "text_v_position",
+          "options": [
+            {
+              "value": "flex-start",
+              "label": "Top"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "flex-end",
+              "label": "Bottom"
+            }
+          ],
+          "default": "center",
+          "label": "Text Vertical Position"
+        },
+        {
+          "type": "header",
+          "content": "Button Settings"  
+        },
+        {
+          "type": "text", 
+          "id": "btn_text",
+          "label": "Button text",
+          "default": "Button"
+        },
+        {
+          "type": "color",
+          "id": "btn_color",
+          "label": "Button color"
+        }, 
+        {
+          "type": "color",
+          "id": "btn_text_color",
+          "label": "Button Text color"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "GDC: Multimedia Slideshow",
+      "category": "GDC Custom Components"
+    }
+  ]
+}
+{% endschema %}     

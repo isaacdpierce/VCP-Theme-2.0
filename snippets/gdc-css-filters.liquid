@@ -1,0 +1,107 @@
+{% if type == section %}
+  filter: opacity({{ section.settings.opacity }}%) 
+          blur({{ section.settings.blur }}px) 
+          brightness({{ section.settings.brightness }}%) 
+          contrast({{ section.settings.contrast }}%) 
+          grayscale({{ section.settings.grey_scale }}%) 
+          hue-rotate({{ section.settings.hue_rotate }}deg) 
+          saturate({{ section.settings.saturate }}%) 
+          sepia({{ section.settings.sepia }}%); 
+{% endif %}
+
+{% if type == block %}
+  filter: opacity({{ block.settings.opacity }}%) 
+          blur({{ block.settings.blur }}px) 
+          brightness({{ block.settings.brightness }}%) 
+          contrast({{ block.settings.contrast }}%) 
+          grayscale({{ block.settings.grey_scale }}%) 
+          hue-rotate({{ block.settings.hue_rotate }}deg) 
+          saturate({{ block.settings.saturate }}%) 
+          sepia({{ block.settings.sepia }}%);
+{% endif %}
+
+
+{% comment %}
+SCHEMA SETTINGS
+    {
+      "type": "range",
+      "id": "opacity",
+      "label": "Opacity",
+      "default": 100,
+      "min": 0,
+      "max": 100,
+      "unit": "%",
+      "step": 1
+    },
+    {
+      "type": "range",
+      "id": "blur",
+      "label": "Blur",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "unit": "%",
+      "step": 1
+    }, 
+    {
+      "type": "range",
+      "id": "brightness",
+      "label": "Brightness",
+      "default": 100,
+      "min": 10,
+      "max": 200,
+      "unit": "%",
+      "step": 2
+    },
+    {
+      "type": "range",
+      "id": "contrast",
+      "label": "Contrast",
+      "default": 100,
+      "min": 10,
+      "max": 200,
+      "unit": "%",
+      "step": 2
+    },
+    {
+      "type": "range",
+      "id": "grey_scale",
+      "label": "Gey Scale",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "unit": "%",
+      "step": 1
+    },
+    {
+      "type": "range",
+      "id": "hue_rotate",
+      "label": "Hue Rotate",
+      "default": 0,
+      "min": 0,
+      "max": 360,
+      "unit": "%",
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "sepia",
+      "label": "Sepia",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "unit": "%",
+      "step": 1
+    },
+    {
+      "type": "range",
+      "id": "saturate",
+      "label": "Saturate",
+      "default": 100,
+      "min": 0,
+      "max": 200,
+      "unit": "%",  
+      "step": 2
+    },
+  {% endcomment %}
+

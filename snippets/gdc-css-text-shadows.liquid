@@ -1,0 +1,71 @@
+{% comment %}
+SCHEMA SETTINGS
+  {
+    "type": "select",
+    "id": "text_shadow",
+    "options": [
+        { "value": "none", "label": "None"},  
+        { "value": "simple", "label": "Simple"},  
+        { "value": "spread", "label": "Spread"},  
+        { "value": "glow", "label": "Glow"},  
+        { "value": "big_glow", "label": "Big Glow"},  
+        { "value": "fancy", "label": "Fancy"},
+        { "value": "relief", "label": "Relief"},
+        { "value": "deep", "label": "Deep"}
+    ],
+    "label": "Text Shadow Effects"
+  }
+{% endcomment %}
+
+{% if block.settings.text_shadow == 'simple' %} 
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.8) !important; 
+    {% elsif block.settings.text_shadow == 'spread' %}
+    text-shadow: 0 1px 20px rgba(0, 0, 0, 0.8) !important;
+    {% elsif block.settings.text_shadow == 'glow' %}
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) !important; 
+    {% elsif block.settings.text_shadow == 'big_glow' %}
+    text-shadow: 
+    1px 0px 1px #ccc, 0px 1px 1px #eee, 
+    2px 1px 1px #ccc, 1px 2px 1px #eee,
+    3px 2px 1px #ccc, 2px 3px 1px #eee,
+    4px 3px 1px #ccc, 3px 4px 1px #eee,
+    5px 4px 1px #ccc, 4px 5px 1px #eee,
+    6px 5px 1px #ccc, 5px 6px 1px #eee,
+    7px 6px 1px #ccc !important; 
+    {% elsif block.settings.text_shadow == 'fancy' %}
+    text-shadow: 0 1px {{ block.settings.font_color }}70,
+                -1px 0 {{ block.settings.bg_color }}70,
+                -1px 2px {{ block.settings.font_color }}70,
+                -2px 1px {{ block.settings.bg_color }}70,
+                -2px 3px {{ block.settings.font_color }}70,
+                -3px 2px {{ block.settings.bg_color }}70,
+                -3px 4px {{ block.settings.font_color }}70,
+                -4px 3px {{ block.settings.bg_color }}70,
+                -4px 5px {{ block.settings.font_color }}70,
+                -5px 4px {{ block.settings.bg_color }}70,
+                -5px 6px {{ block.settings.font_color }}70,
+                -6px 5px {{ block.settings.bg_color }}70,
+                -6px 7px {{ block.settings.font_color }}70,
+                -7px 6px {{ block.settings.bg_color }}70,
+                -7px 8px {{ block.settings.font_color }}70,
+                -8px 7px {{ block.settings.bg_color }}70 !important; 
+    {% elsif block.settings.text_shadow == 'relief' %}
+    text-shadow: -4px 3px 0 {{ block.settings.bg_color }}, -14px 7px 0 #222222 !important; 
+    {% elsif block.settings.text_shadow == 'deep' %}
+    text-shadow:  0 1px 0px #333,
+    1px 0 0px #777,
+    1px 2px 1px #333,
+                  2px 1px 1px #777,
+                  2px 3px 2px #333,
+                  3px 2px 2px #777,
+                  3px 4px 2px #333,
+                  4px 3px 3px #777,
+                  4px 5px 3px #333,
+                  5px 4px 2px #777,
+                  5px 6px 2px #333,
+                  6px 5px 2px #777,
+                  6px 7px 1px #333,
+                  7px 6px 1px #777,
+                  7px 8px 0px #333,
+                  8px 7px 0px #777 !important;
+    {% endif %}

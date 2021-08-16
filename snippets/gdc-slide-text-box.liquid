@@ -1,0 +1,86 @@
+<div class="gdc-slide__text-wrapper block--{{ block.id }}">
+  <div class="gdc-slide__text block--{{ block.id }}">
+
+    {% if block.settings.text_bg == 'round' %} 
+    
+      <div class="gdc-text-bg__round block--{{ block.id }}"></div>
+    {% endif %}
+    
+    {% if block.settings.title != blank %}
+      <h2>{{ block.settings.title }}</h2>
+    {% endif %}
+    {% if block.settings.text != blank %}
+      {{ block.settings.text }}
+    {% endif %}
+    {% if block.settings.btn_text != blank %}
+      <a href="{{ block.settings.btn_url }}" class="button gdc-slide__button block--{{ block.id }}">{{ block.settings.btn_text }}</a>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+  .gdc-slide__text-wrapper.block--{{ block.id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: {{ block.settings.text_v_position }};
+    align-items: {{ block.settings.text_h_position }};
+  }
+  
+  .gdc-text-bg__round.block--{{ block.id }} {
+    width: 150%;
+    height: 200%;
+    display: inline-block !important;
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    z-index: 0;
+    background: radial-gradient({{ block.settings.text_bg_color }}60 30%, transparent 70%);
+  }
+
+  .gdc-slide__text.block--{{ block.id }} {
+    position: relative; 
+    width: {{ block.settings.text_width }}px;
+    max-width: 90vw;
+    {% if block.settings.text_bg == 'rectangle' %}
+      padding: 1vw 2vw;
+      background: {{ block.settings.text_bg_color }}50;
+    {% endif %}
+    margin: {{ block.settings.text_margin }}vw;
+  }
+
+  .gdc-slide__text.block--{{ block.id }} h2,
+  .gdc-slide__text.block--{{ block.id }} p,
+  .gdc-slide__button.block--{{ block.id }} {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .gdc-slide__text.block--{{ block.id }} h2,
+  .gdc-slide__text.block--{{ block.id }} p {
+    color: {{ block.settings.text_color }};
+    {% if block.settings.text_shadow %}
+      text-shadow: 0 0 1px rgba(0, 0, 0, 0.61);
+    {% endif %}
+  }
+  
+  .gdc-slide__text.block--{{ block.id }} h2 {
+    margin: 0;
+  }
+
+  .gdc-slide__button.block--{{ block.id }} {
+    color: {{ block.settings.btn_text_color }} !important;
+    background-color: {{ block.settings.btn_color }} !important;
+    box-shadow: none !important;
+  }
+
+  @media screen and (min-width: 600px) {
+    .gdc-slide__text.block--{{ block.id }} h2 {
+      font-size: {{ block.settings.title_size }}px;
+    }
+  }
+</style>

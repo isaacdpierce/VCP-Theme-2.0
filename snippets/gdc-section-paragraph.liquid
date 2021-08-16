@@ -1,0 +1,43 @@
+{%- assign ss = section.settings -%}
+
+<div class="gdc-section__paragraph-section section--{{ section.id }}">
+  <div class="gdc-section__paragraph gdc-text__full-width section--{{ section.id }}">
+    {% if ss.title != blank %}
+      <h2>{{ ss.title }}</h2>
+    {% endif %}
+    {% if ss.subtitle != blank %}
+      <h5>{{ ss.subtitle }}</h5>
+    {% endif %}
+    {% if ss.text != blank %}
+      {{ ss.text }}
+    {% endif %}
+  </div>
+</div>
+
+<style>
+  .gdc-section__paragraph.section--{{ section.id }} h5,
+  .gdc-section__paragraph.section--{{ section.id }} h2,
+  .gdc-section__paragraph.section--{{ section.id }} p  {
+    color: {{ ss.font_color }};
+    text-align: {{ ss.text_align }};
+    margin: 0;
+    margin-bottom: 5px;
+  }
+
+  .gdc-section__paragraph.section--{{ section.id }}:last-of-type p {
+    margin-bottom: 0; 
+  }
+
+  .gdc-section__paragraph.section--{{ section.id }} h2 {
+    position: relative;
+    font-size: {{ ss.title_size }}px;
+  }
+
+  .gdc-section__paragraph.section--{{ section.id }} h5 {
+    font-size: {{ ss.subtitle_size }}px;
+  }
+
+  .gdc-section__paragraph.section--{{ section.id }} p {
+    font-size: {{ ss.text_size }}px;
+  }
+</style>

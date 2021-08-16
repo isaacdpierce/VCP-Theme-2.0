@@ -1,0 +1,752 @@
+<section class="gdc-text-section__wrapper section--{{ section.id }}">
+  {% render 'gdc-section-header' %}
+  {% render 'gdc-template-blocks-text' %}
+</section>
+
+<style>
+  .gdc-text-section__wrapper.section--{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    margin-top: {{ section.settings.t_margin }}px;
+    margin-bottom: {{ section.settings.b_margin }}px;
+    padding-top: {{ section.settings.t_padding }}px;
+    padding-bottom: {{ section.settings.b_padding }}px; 
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "GDC: Text",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Text Section Settings"
+      },
+      {
+        "type": "range",
+        "id": "t_margin",
+        "label": "Section top margin",
+        "default": 0,
+        "min": 0,
+        "max": 100,
+        "step": 10,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "b_margin",
+        "label": "Section bottom margin",
+        "default": 0,
+        "min": 0,
+        "max": 100,
+        "step": 10,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "t_padding",
+        "label": "Top Padding",
+        "default": 0,
+        "min": 0,
+        "max": 100,
+        "step": 10,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "b_padding",
+        "label": "Bottom Padding",
+        "default": 0,
+        "min": 0,
+        "max": 100,
+        "step": 10,
+        "unit": "px"
+      },
+      {
+        "type": "text", 
+        "id": "title",
+        "label": "Section Title" 
+      },
+      {
+        "type": "checkbox",
+        "id": "title_line",
+        "label": "Underline Title",
+        "default": false
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "Section Subtitle"
+      },
+      {
+        "type": "select",
+        "id": "text_align",
+        "options": [
+           { "value": "left", "label": "Left"},
+           { "value": "center", "label": "Center"},  
+           { "value": "right", "label": "Right"}
+        ],
+        "label": "Section Text alignment"
+      },
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Section Background color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "font_color",
+        "label": "Section Font color",
+        "default": "#000"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "paragraph",
+        "name": "Paragraph",
+        "settings": [
+          {
+            "type": "header",
+            "content": "Paragraph Settings"
+          },
+          {
+            "type": "checkbox",
+            "id": "hide_tablets",
+            "label": "Hide paragraph on tablets",
+            "default": false,
+            "info": "Section won't show on screen sizes smaller than 1000px wide"
+          },
+          {
+            "type": "checkbox",
+            "id": "hide_phones",
+            "label": "Hide paragraph on phones",
+            "default": false,
+            "info": "Section won't show on screen sizes smaller than 600px wide"
+          },
+          {
+            "type": "range",
+            "id": "t_margin",
+            "label": "Section top margin",
+            "default": 0,
+            "min": 0,
+            "max": 100,
+            "step": 10,
+            "unit": "px"
+          },
+          {
+            "type": "range",
+            "id": "b_margin",
+            "label": "Section bottom margin",
+            "default": 0,
+            "min": 0,
+            "max": 100,
+            "step": 10,
+            "unit": "px"
+          },
+          {
+            "type": "range",
+            "id": "t_padding",
+            "label": "Top Padding",
+            "default": 0,
+            "min": 0,
+            "max": 100,
+            "step": 10,
+            "unit": "px"
+          },
+          {
+            "type": "range",
+            "id": "b_padding",
+            "label": "Bottom Padding",
+            "default": 0,
+            "min": 0,
+            "max": 100,
+            "step": 10,
+            "unit": "px"
+          },
+          {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Background color",
+            "default": "#ffffff"
+          },
+          {
+            "type": "color",
+            "id": "font_color",
+            "label": "Font color",
+            "default": "#000"
+          },
+          {
+            "type": "text", 
+            "id": "title",
+            "label": "Title" 
+          },
+          {
+            "type": "select",
+            "id": "title_align",
+            "options": [
+               { "value": "left", "label": "Left"},
+               { "value": "center", "label": "Center"},  
+               { "value": "right", "label": "Right"}
+            ],
+            "label": "Title alignment"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text"
+          },
+          {
+            "type": "select",
+            "id": "text_align",
+            "options": [
+               { "value": "left", "label": "Left"},
+               { "value": "center", "label": "Center"},  
+               { "value": "right", "label": "Right"}
+            ],
+            "label": "Text alignment"
+          }
+        ]
+      },
+      {
+        "type": "title",
+        "name": "Title",
+        "settings": [
+          {
+            "type": "header",
+            "content": "Title Section Settings"
+          },
+          {
+            "type": "checkbox",
+            "id": "hide_tablets",
+            "label": "Hide paragraph on tablets",
+            "default": false,
+            "info": "Section won't show on screen sizes smaller than 1000px wide"
+          },
+          {
+            "type": "checkbox",
+            "id": "hide_phones",
+            "label": "Hide paragraph on phones",
+            "default": false,
+            "info": "Section won't show on screen sizes smaller than 600px wide"
+          },
+          {
+            "type": "range",
+            "id": "t_margin",
+            "label": "Section top margin",
+            "default": 0,
+            "min": 0,
+            "max": 100,
+            "step": 10,
+            "unit": "px"
+          },
+          {
+            "type": "range",
+            "id": "b_margin",
+            "label": "Section bottom margin",
+            "default": 0,
+            "min": 0,
+            "max": 100,
+            "step": 10,
+            "unit": "px"
+          },
+          {
+            "type": "range",
+            "id": "t_padding",
+            "label": "Top Padding",
+            "default": 0,
+            "min": 0,
+            "max": 100,
+            "step": 10,
+            "unit": "px"
+          },
+          {
+            "type": "range",
+            "id": "b_padding",
+            "label": "Bottom Padding",
+            "default": 0,
+            "min": 0,
+            "max": 100,
+            "step": 10,
+            "unit": "px"
+          },
+          {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Background color",
+            "default": "#ffffff"
+          },
+          {
+            "type": "color",
+            "id": "font_color",
+            "label": "Font color",
+            "default": "#000"
+          },
+          {
+            "type": "header",
+            "content": "Title Settings"
+          },
+          {
+            "type": "text", 
+            "id": "title",
+            "label": "Title" 
+          },
+          {
+            "type": "select",
+            "id": "title_align",
+            "options": [
+               { "value": "left", "label": "Left"},
+               { "value": "center", "label": "Center"},  
+               { "value": "right", "label": "Right"}
+            ],
+            "label": "Title alignment"
+          },
+          {
+            "type": "range",
+            "id": "font_size",
+            "label": "Font Size",
+            "default": 36,   
+            "min": 18,  
+            "max": 118,
+            "step": 1,  
+            "unit": "px"  
+          },
+          {
+            "type": "checkbox",
+            "id": "border_all",
+            "label": "Border All Sides",
+            "default": false,
+            "info": "Must uncheck for single side borders."
+          },
+          {
+            "type": "checkbox",
+            "id": "border_top",
+            "label": "Border Top",
+            "default": false
+          },
+          {
+            "type": "checkbox",
+            "id": "border_bottom",
+            "label": "Border Bottom",
+            "default": false
+          },
+          {
+            "type": "checkbox",
+            "id": "border_left",
+            "label": "Border Left",
+            "default": false
+          },
+          {
+            "type": "checkbox",
+            "id": "border_right",
+            "label": "Border Right",
+            "default": false
+          },
+          {
+            "type": "range",
+            "id": "border_size",
+            "label": "Border Size",
+            "default": 0,   
+            "min": 0,  
+            "max": 30,
+            "step": 1,  
+            "unit": "px"  
+          },
+          {
+            "type": "range",
+            "id": "text_h_padding",
+            "label": "Text Horizontal Padding", 
+            "default": 0,   
+            "min": 0,  
+            "max": 60,
+            "step": 1,  
+            "unit": "px",
+            "info": "The space between the text and the text left and right borders."   
+          },
+          { 
+            "type": "range",
+            "id": "text_v_padding",
+            "label": "Text Vertical Padding",
+            "default": 0,   
+            "min": 0,  
+            "max": 60,
+            "step": 1,  
+            "unit": "px",
+            "info": "The space between the text and the text top and bottom borders."   
+          },
+          {
+            "type": "color",
+            "id": "border_color",
+            "label": "Border color",
+            "default": "#000"
+          },
+          {
+            "type": "select",
+            "id": "text_shadow",
+            "options": [
+               { "value": "none", "label": "None"},  
+               { "value": "simple", "label": "Simple"},  
+               { "value": "spread", "label": "Spread"},  
+               { "value": "glow", "label": "Glow"},  
+               { "value": "big_glow", "label": "Big Glow"},  
+               { "value": "fancy", "label": "Fancy"},
+               { "value": "relief", "label": "Relief"},
+               { "value": "deep", "label": "Deep"}
+            ],
+            "label": "Text Shadow Effects"
+          },
+          {
+            "type": "checkbox",
+            "id": "use_custom_font",
+            "label": "Use Custom Font",
+            "default": false,
+            "info": "Check to activate font from selector below. Otherwise default header font will be shown."
+          },
+          {
+            "type": "font_picker",
+            "id": "title_font",
+            "label": "Font",
+            "default": "work_sans_n6" 
+          }
+        ]
+      },
+      {
+        "type": "text-columns",
+        "name": "Text Columns",
+        "settings": [
+          {
+            "type": "header",
+            "content": "Column Settings"
+          },
+          {
+            "type": "checkbox",
+            "id": "hide_tablets",
+            "label": "Hide column section on tablets",
+            "default": false,
+            "info": "Section won't show on screen sizes smaller than 1000px wide"
+          },
+          {
+            "type": "checkbox",
+            "id": "hide_phones",
+            "label": "Hide column section on phones",
+            "default": false,
+            "info": "Section won't show on screen sizes smaller than 600px wide"
+          },
+          {
+            "type": "select",
+            "id": "mobile_wrap",
+            "options": [
+               { "value": "wrap", "label": "Wrap"},
+               { "value": "stack", "label": "Stack"}
+            ],
+            "label": "Column Mobile Setting"
+          },
+          {
+            "type": "range",
+            "id": "t_margin",
+            "label": "Section top margin",
+            "default": 0,
+            "min": 0,
+            "max": 100,
+            "step": 10,
+            "unit": "px"
+          },
+          {
+            "type": "range",
+            "id": "b_margin",
+            "label": "Section bottom margin",
+            "default": 0,
+            "min": 0,
+            "max": 100,
+            "step": 10,
+            "unit": "px"
+          },
+          {
+            "type": "range",
+            "id": "t_padding",
+            "label": "Top Padding",
+            "default": 0,
+            "min": 0,
+            "max": 100,
+            "step": 10,
+            "unit": "px"
+          },
+          {
+            "type": "range",
+            "id": "b_padding",
+            "label": "Bottom Padding",
+            "default": 0,
+            "min": 0,
+            "max": 100,
+            "step": 10,
+            "unit": "px"
+          },
+          {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Background color",
+            "default": "#ffffff"
+          },
+          {
+            "type": "color",
+            "id": "font_color",
+            "label": "Font color",
+            "default": "#000"
+          },
+          {
+            "type": "select",
+            "id": "title_align",
+            "options": [
+               { "value": "left", "label": "Left"},
+               { "value": "center", "label": "Center"},  
+               { "value": "right", "label": "Right"}
+            ],
+            "label": "Title alignment"
+          },
+          {
+            "type": "text", 
+            "id": "title_1",
+            "label": "Title Column 1" 
+          },
+          {
+            "type": "richtext",
+            "id": "text_1",
+            "label": "Text Column 1"
+          },
+          {
+            "type": "text", 
+            "id": "title_2",
+            "label": "Title Column 2" 
+          },
+          {
+            "type": "richtext",
+            "id": "text_2",
+            "label": "Text Column 2"
+          },
+          {
+            "type": "text", 
+            "id": "title_3",
+            "label": "Title Column 3" 
+          },
+          {
+            "type": "richtext",
+            "id": "text_3",
+            "label": "Text Column 3"
+          },
+          {
+            "type": "text", 
+            "id": "title_4",
+            "label": "Title Column 4" 
+          },
+          {
+            "type": "richtext",
+            "id": "text_4",
+            "label": "Text Column 4"
+          },
+          {
+            "type": "select",
+            "id": "text_align",
+            "options": [
+               { "value": "left", "label": "Left"},
+               { "value": "center", "label": "Center"},    
+               { "value": "right", "label": "Right"}
+            ],
+            "label": "Text alignment"
+          }
+        ]
+      },
+      {
+        "type": "button",
+        "name": "Button",
+        "settings": [
+          {
+            "type": "header",
+            "content": "Section Settings"
+          },
+          {
+            "type": "checkbox",
+            "id": "hide_tablets",
+            "label": "Hide paragraph on tablets",
+            "default": false,
+            "info": "Section won't show on screen sizes smaller than 1000px wide"
+          },
+          {
+            "type": "checkbox",
+            "id": "hide_phones",
+            "label": "Hide paragraph on phones",
+            "default": false,
+            "info": "Section won't show on screen sizes smaller than 600px wide"
+          },
+          {
+            "type": "range",
+            "id": "t_margin",
+            "label": "Section top margin",
+            "default": 0,
+            "min": 0,
+            "max": 100,
+            "step": 10,
+            "unit": "px"
+          },
+          {
+            "type": "range",
+            "id": "b_margin",
+            "label": "Section bottom margin",
+            "default": 0,
+            "min": 0,
+            "max": 100,
+            "step": 10,
+            "unit": "px"
+          },
+          {
+            "type": "range",
+            "id": "t_padding",
+            "label": "Top Padding",
+            "default": 0,
+            "min": 0,
+            "max": 100,
+            "step": 10,
+            "unit": "px"
+          },
+          {
+            "type": "range",
+            "id": "b_padding",
+            "label": "Bottom Padding",
+            "default": 0,
+            "min": 0,
+            "max": 100,
+            "step": 10,
+            "unit": "px"
+          },
+          {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Background color",
+            "default": "#ffffff"
+          },
+          {
+            "type": "header",
+            "content": "Button Settings"
+          },
+          {
+            "type": "text", 
+            "id": "btn_text",
+            "label": "Button Text" 
+          },
+          {
+            "type": "url", 
+            "id": "url",
+            "label": "Button URL" 
+          },
+          {
+            "type": "select",
+            "id": "h_align",
+            "options": [
+               { "value": "start", "label": "Left"}, 
+               { "value": "center", "label": "Center"},  
+               { "value": "flex-end", "label": "Right"}
+            ],
+            "label": "Button Horizontal alignment"
+          },
+          {
+            "type": "range",
+            "id": "font_size",
+            "label": "Font Size", 
+            "default": 18, 
+            "min": 14,
+            "max": 48,
+            "step": 1,
+            "unit": "px"
+          },
+          {
+            "type": "range",
+            "id": "btn_border",
+            "label": "Border", 
+            "default": 0, 
+            "min": 0,
+            "max": 15,
+            "step": 1,
+            "unit": "px" 
+          },
+          {
+            "type": "range",
+            "id": "btn_corners",
+            "label": "Rounded Corners", 
+            "default": 0, 
+            "min": 0,
+            "max": 50,
+            "step": 1,
+            "unit": "%"
+          },
+          {
+            "type": "header",
+            "content": "Button Color Settings"
+          },
+          {
+            "type": "color",
+            "id": "font_color",
+            "label": "Font color",
+            "default": "#000"
+          },
+          {
+            "type": "color",
+            "id": "button_border_color",
+            "label": "Button Border Color",
+            "default": "#000"
+          },
+          {
+            "type": "color",
+            "id": "button_color",
+            "label": "Button color",
+            "default": "#999"
+          },
+          {
+            "type": "color",
+            "id": "button_color_2",
+            "label": "Button color 2",
+            "info": "Select second color to activate gradient on button."
+          },
+          {
+            "type": "range",
+            "id": "color_1_prcnt",
+            "label": "Color One Percent", 
+            "default": 50, 
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "%",
+            "info": "Must select second color to activate gradient." 
+          },
+          {
+            "type": "range",
+            "id": "gradient_angle",
+            "label": "Gradient Angle", 
+            "default": 0, 
+            "min": 0,
+            "max": 180,
+            "step": 2,
+            "unit": "deg",
+            "info": "Must select second color to activate gradient." 
+          },
+          {
+            "type": "select",
+            "id": "btn_animation",
+            "options": [
+               { "value": "none", "label": "None"},
+               { "value": "lift", "label": "Lift"},
+               { "value": "rise", "label": "Rise"},  
+               { "value": "expanse", "label": "Expanse"}, 
+               { "value": "pointer", "label": "Pointer"},
+               { "value": "glow", "label": "Glow (Use with dark backgrounds)"}
+            ],
+            "label": "Button Animation"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "GDC: Text",
+        "category": "GDC Custom Components" 
+      }
+    ]
+  }
+{% endschema %}

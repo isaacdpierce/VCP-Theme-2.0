@@ -1,0 +1,179 @@
+{% render 'gdc-product-card' %}
+
+{% schema %}
+  {
+    "name": "GDC: Product Selector", 
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section Settings" 
+      },
+      {
+        "type": "range",
+        "id": "section_width",
+        "label": "Section Width",
+        "default": 90,
+        "min": 50,
+        "max": 100,
+        "step": 1,
+        "unit": "%"
+      },
+      {
+        "type": "range",
+        "id": "t_margin",
+        "label": "Section Top margin",
+        "default": 0,
+        "min": 0,
+        "max": 200,
+        "step": 10,
+        "unit": "px" 
+      },
+      {
+        "type": "range",
+        "id": "b_margin",
+        "label": "Section Bottom margin",
+        "default": 0,
+        "min": 0,
+        "max": 200,
+        "step": 10,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "t_padding",
+        "label": "Section Top padding",
+        "default": 0,
+        "min": 0,
+        "max": 200,
+        "step": 10,
+        "unit": "px" 
+      },
+      {
+        "type": "range",
+        "id": "b_padding",
+        "label": "Section Bottom padding",
+        "default": 0,
+        "min": 0,
+        "max": 200,
+        "step": 10,
+        "unit": "px"
+      },
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background Color",
+        "default": "#ededed"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Title"
+      },
+      {
+        "type": "text",
+        "id": "btn_text",
+        "label": "Link Text",
+        "default": "View All"
+      },
+      {
+        "type": "color",
+        "id": "title_color",
+        "label": "Title Color", 
+        "default": "#111"
+      },
+      {
+        "type": "color",
+        "id": "link_color",
+        "label": "Link Color",
+        "default": "#999"
+      },
+      {
+        "type": "url",
+        "id": "btn_url",
+        "label": "Link url"
+      },
+      {
+        "type": "header",
+        "content": "Product Settings" 
+      },
+      {
+        "type": "range",
+        "id": "column_count",
+        "label": "Products per row",
+        "default": 5,
+        "min": 1,
+        "max": 8,
+        "step": 1
+      },
+      {
+        "type": "range",
+        "id": "border_radius",
+        "label": "Image Rounded corners",
+        "default": 0,
+        "min": 0,
+        "max": 100,
+        "step": 1
+      },
+      {
+        "type": "select",
+        "id": "text_align",
+        "label": "Text alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "left"
+      },
+      {
+        "type": "select",
+        "id": "image_shape",
+        "label": "Image Shape",
+        "options": [
+          {
+            "value": "square",
+            "label": "Square"
+          },
+          {
+            "value": "rectangle",
+            "label": "Rectangle"
+          },
+          {
+            "value": "round",
+            "label": "Round"
+          }
+        ],
+        "default": "rectangle"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "featured_product",
+        "name": "Featured product",
+        "settings": [
+          {
+            "type": "product",
+            "id": "product_item",
+            "label": "Product Item"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "GDC: Product Selector",
+        "category": "GDC Custom Components"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,180 @@
+{%- assign ss = section.settings -%}
+
+<section class="gdc-product-selector__wrapper section--{{ section.id }}">
+  <div class="gdc-product-selector section--{{ section.id }}">
+    <div class="gdc-product-selector__title-row">
+      <h2>{{ ss.title }}</h2>
+      <a href="{{ ss.btn_url }}">{{ ss.btn_text }}</a>
+    </div>
+    <div class="gdc-product-selector__row">
+      {% for block in section.blocks %}
+        {% if block.type == 'featured_product' %}
+          <div class="gdc-product-selector__card section--{{ section.id }}">
+            <a href="{{ block.settings.product_item.url }}">
+              <div class="gdc-product-selector__image section--{{ section.id }}">
+                {% render 'gdc-image' image: block.settings.product_item.featured_image %}
+                <div class="gdc-product-selector__description">{{ block.settings.product_item.description }}</div>
+              </div>
+              <h3>
+                {{ block.settings.product_item.title }}
+              </h3>
+            </a>
+          </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+</section>
+
+<style>
+  .gdc-product-selector__wrapper.section--{{ section.id }} a {
+    text-decoration: none;
+    color: {{ ss.link_color }} !important;
+  }
+
+  .gdc-product-selector__wrapper.section--{{ section.id }} h2 {
+    color: {{ ss.title_color }};
+    margin: 0;
+  }
+
+  .gdc-product-selector__wrapper.section--{{ section.id }} {
+    margin-top: {{ ss.t_margin }}px;
+    margin-bottom: {{ ss.b_margin }}px;
+    padding-top: {{ ss.t_padding }}px;
+    padding-bottom: {{ ss.b_padding }}px;
+    background-color: {{ ss.bg_color }};
+  }
+  
+  .gdc-product-selector.section--{{ section.id }} {
+    width: {{ ss.section_width }}vw;
+    margin: 0 auto;
+  }
+
+  .gdc-product-selector__row,
+  .gdc-product-selector__card, 
+  .gdc-product-selector__title-row {
+    display: flex;
+  }
+  
+  .gdc-product-selector__title-row {
+    justify-content: space-between;
+    padding: 0 10px;
+  }
+
+  .gdc-product-selector__row {
+    flex-wrap: wrap; 
+    justify-content: center;
+  }
+
+  .gdc-product-selector__card.section--{{ section.id }} {
+    flex-direction: column;
+    margin: 20px 10px;
+    width: calc({{ ss.section_width }}vw / {{ ss.column_count }} - 20px);
+    min-width: 150px;
+    text-align: {{ ss.text_align }};
+  }
+
+  .gdc-product-selector__card.section--{{ section.id }} h3 {
+    color: {{ ss.link_color }};
+    margin-bottom: 0;
+  }
+
+  .gdc-product-selector__image.section--{{ section.id }} {
+    position: relative;
+    border-radius: {{ ss.border_radius }}px;
+    width: 100%;
+    {% if ss.image_shape == 'round' or ss.image_shape == 'square' %}
+      height: calc({{ ss.section_width }}vw / {{ ss.column_count }} - 20px);
+    {% endif %}
+    
+    {% if ss.image_shape == 'rectangle' %}
+      min-height: 200px;
+      height: 20vw;
+    {% endif %}
+
+    {% if ss.image_shape == 'round' %}
+      border-radius: 50% !important;
+    {% endif %}
+    
+    overflow: hidden;
+  }
+
+  .gdc-product-selector__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .gdc-product-selector__description {
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.795);
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 1s;
+  }
+
+
+  @media screen and (min-width: 350px) {
+    .gdc-product-selector__description:hover {
+      opacity: 1;
+    }
+  }
+
+  @media screen and (max-width: 1000px) {
+    .gdc-product-selector__card.section--{{ section.id }} {
+      width: calc({{ ss.section_width }}vw / 3 - 20px) ;
+    }
+
+    .gdc-product-selector__image.section--{{ section.id }} {
+
+      {% if ss.image_shape == 'rectangle' %}
+        height: calc({{ ss.section_width }}vw / 3 + 15%) ;
+      {% endif %}
+
+      {% if ss.image_shape == 'round' or ss.image_shape == 'square' %}
+        height: calc({{ ss.section_width }}vw / 3 - 20px);
+      {% endif %}
+    }
+  }
+
+  @media screen and (max-width: 700px) {
+    .gdc-product-selector__card.section--{{ section.id }} {
+      width: calc({{ ss.section_width }}vw / 2 - 20px) ;
+    }
+
+    .gdc-product-selector__image.section--{{ section.id }} {
+
+      {% if ss.image_shape == 'rectangle' %}
+        height: calc({{ ss.section_width }}vw / 2 + 15%) ;
+      {% endif %}
+
+      {% if ss.image_shape == 'round' or ss.image_shape == 'square' %}
+        height: calc({{ ss.section_width }}vw / 2 - 20px);
+      {% endif %}
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    .gdc-product-selector__card.section--{{ section.id }} {
+      width: calc({{ ss.section_width }}vw - 20px) ;
+    }
+
+    .gdc-product-selector__image.section--{{ section.id }} {
+
+      {% if ss.image_shape == 'rectangle' %}
+        height: calc({{ ss.section_width }}vw + 15%) ;
+      {% endif %}
+
+      {% if ss.image_shape == 'round' or ss.image_shape == 'square' %}
+        height: calc({{ ss.section_width }}vw - 20px);
+      {% endif %}
+    }
+  }
+
+</style>

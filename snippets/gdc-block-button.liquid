@@ -1,0 +1,37 @@
+
+<div class="gdc-block__button block--{{ block.id }} {{ hide_mobile }} {{ hide_tablets }}">
+  <a class="gdc-button button-animation" href="{{ block.settings.url }}"><span>{{ block.settings.btn_text }}</span></a>
+</div>
+
+<style>
+  {% assign btn_animation = block.settings.btn_animation %}
+
+  .gdc-block__button.block--{{ block.id }} {
+    justify-content: {{ block.settings.h_align }}; 
+    margin-top: {{ block.settings.t_margin }}px;
+    margin-bottom: {{ block.settings.b_margin }}px;
+    padding-top: {{ block.settings.t_padding }}px;
+    padding-bottom: {{ block.settings.b_padding }}px;
+    background-color: {{ block.settings.bg_color }}; 
+  }
+  
+  .gdc-block__button.block--{{ block.id }} a {
+    color: {{ block.settings.font_color }};
+    border: {{ block.settings.btn_border }}px solid {{ block.settings.button_border_color }};
+    border-radius: {{ block.settings.btn_corners }}px;
+    {% if block.settings.button_color_2 != blank %}
+    background: linear-gradient(
+                {{ block.settings.gradient_angle }}deg, 
+                {{ block.settings.button_color }} {{ block.settings.color_1_prcnt }}%, 
+                {{ block.settings.button_color_2 }});
+    {% else %}
+    background-color: {{ block.settings.button_color }};
+    {% endif %}
+    font-size: {{ block.settings.font_size }}px; 
+  }
+
+  
+  {% render 'gdc-css-button-animations' style: btn_animation %}
+  
+  
+</style>

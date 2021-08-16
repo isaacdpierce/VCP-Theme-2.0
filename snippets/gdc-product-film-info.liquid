@@ -1,0 +1,91 @@
+{%- liquid 
+  assign info = product.metafields.film_info
+  assign closed_captions = "No"
+
+  assign directors_array = info.director.value | split: ',' 
+  assign subjects_array = info.subjects.value | split: ',' 
+  assign awards_array = info.highlights_and_awards.value | split: ',' 
+  assign availability_array  = info.availability.value | split: ',' 
+
+  if info.closed_captions.value == true 
+    assign closed_captions = "Yes"
+  endif
+
+-%}
+
+<div class="gdc-product-film-info__wrapper">
+
+  <div class="gdc-product-film-info__section"> 
+
+    {% if directors_array.size > 1 %}
+      <h4>Directors</h4>
+    {% else %}
+      <h4>Director</h4>
+    {% endif %}
+    
+    {% for director in directors_array %}
+      {% assign director_url = '' %}
+      
+      {% for collection in collections %}
+        {% if director == collection.title %}
+          {% assign director_url = collection.url %}
+        {% endif %}
+      {% endfor %}
+        
+      {% if director_url != blank %}
+        <a href="{{ director_url }}"  class="gdc-product-film-info">{{ director }}</a>
+      {% else %}
+        <span class="gdc-product-film-info">{{ director }}</span>
+      {% endif %}
+    {% endfor %} 
+  </div>
+
+
+  <div class="gdc-product-film-info__section gdc-product-film-info__horizontal-list">
+    {% if subjects_array.size > 1 %}
+      <h4>Subjects</h4>
+    {% else %}
+      <h4>Subject</h4>
+    {% endif %}
+
+    {% for subject in subjects_array %}
+    {% assign subject_url = '' %}
+
+    {% for collection in collections %}
+      {% if subject == collection.title %}
+        {% assign subject_url = collection.url %}
+      {% endif %}
+    {% endfor %}
+      
+    {% if subject_url != blank %}
+      <a href="{{ subject_url }}">{{ subject }}</a>
+    {% else %}
+      <span>{{ subject }}</span>
+    {% endif %}
+  {% endfor %} 
+
+  </div>
+
+  <ul class="gdc-product-film-info__section">
+    {% if info.release_date.value != blank %}
+      <li>Release Date <span>{{ info.release_date.value }}</span></li>
+    {% endif %}
+    {% if info.running_time.value != blank %}
+      <li>Running Time <span>{{ info.running_time.value }}</span></li>
+    {% endif %}
+    {% if info.closed_captions.value != blank %}
+      <li>Closed Captions 
+        <span>{{ closed_captions }}</span>
+      </li>
+    {% endif %}
+    {% if info.availability.value != blank %}
+      <li>Availability 
+        <span>
+        {% for country in availability_array %}
+          {{ country }}
+        {% endfor %}
+        </span>
+      </li>
+    {% endif %}
+  </ul>
+</div>

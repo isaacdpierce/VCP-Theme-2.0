@@ -1,0 +1,117 @@
+{%- liquid 
+  assign show_text = false
+
+  if section.settings.title != blank or section.settings.text != blank or section.settings.subtitle != blank
+    assign show_text = true
+  endif 
+  
+-%}
+
+<section class="gdc-hero-image-text__wrapper section--{{ section.id }}">
+  {% if section.settings.image %}
+  <div class="gdc-hero-image-text__image section--{{ section.id }}">
+    {% render 'gdc-image' image:section.settings.image  %}
+  </div>
+  {% endif%}
+
+  {% if show_text %}
+    <div class="gdc-hero-image-text__text-wrapper section--{{ section.id }}">
+      <div class="gdc-hero-image-text__text section--{{ section.id }}">
+
+        {% if section.settings.title != blank %}
+          <h2>{{ section.settings.title }}</h2>
+        {% endif %}
+
+        {% if section.settings.subtitle != blank %}
+          <h3>{{ section.settings.subtitle }}</h3>
+        {% endif %}
+
+        {% if section.settings.text != blank %}
+          <p>{{ section.settings.text}}</p>
+        {% endif %}
+
+        {% if section.settings.btn_text != blank %}
+          <a class="button gdc-hero-image__button" href="{{ section.settings.btn_url }}">{{ section.settings.btn_text }}</a>
+        {% endif %}
+
+      </div>
+    </div>
+  {% endif %}
+</section>
+
+<style>
+  .gdc-hero-image-text__wrapper.section--{{ section.id }} {
+    width: {{ section.settings.hero_width }}vw;
+    height: {{ section.settings.hero_height }}px;
+    margin-top: {{ section.settings.t_margin }}px;
+    margin-bottom: {{ section.settings.b_margin }}px;
+    background-color: {{ section.settings.bg_color }};
+    border-radius: {{ section.settings.border_radius }}px;
+  }
+
+  .gdc-hero-image-text__image.section--{{ section.id }} { 
+    height: {{ section.settings.hero_height }}px;
+  }
+
+  .gdc-hero-image-text__image.section--{{ section.id }} img {
+    object-position: {{ section.settings.img_h_position }}% {{ section.settings.img_v_position }}%;
+    {% render 'gdc-css-filters' type: section %} 
+  }
+
+  .gdc-hero-image-text__text-wrapper.section--{{ section.id }} {
+    justify-content: {{ section.settings.text_h_pos }};
+    align-items: {{ section.settings.text_v_pos }};
+    padding: {{ section.settings.v_padding }}px {{ section.settings.h_padding }}px;
+    height: {{ section.settings.hero_height }}px;
+  }
+
+  .gdc-hero-image-text__text.section--{{ section.id }} {
+    text-align: {{ section.settings.text_align }};
+    max-width: {{ section.settings.text_max_width }}px;
+    {% if section.settings.bg_opacity < 100 %}
+      background-color: {{ section.settings.text_bg_color }}{{ section.settings.bg_opacity }};
+    {% else %}
+      background-color: {{ section.settings.text_bg_color }};
+    {% endif %};
+  }
+
+  .gdc-hero-image-text__text.section--{{ section.id }} p, 
+  .gdc-hero-image-text__text.section--{{ section.id }} h2, 
+  .gdc-hero-image-text__text.section--{{ section.id }} h3 {
+    color: {{ section.settings.text_color }};
+  }
+
+  .gdc-hero-image-text__text.section--{{ section.id }} h2 {
+    font-size: {{ section.settings.title_size }}px;
+  }
+
+  .gdc-hero-image-text__text.section--{{ section.id }} h3 {
+    font-size: {{ section.settings.subtitle_size }}px;
+  }
+
+  .gdc-hero-image-text__text.section--{{ section.id }} p {
+    font-size: {{ section.settings.text_size }}px;
+  }
+
+  .gdc-hero-image__button {
+    background-color: {{ section.settings.btn_color }} !important;
+    color: {{ section.settings.btn_text_color }} !important;
+  }
+
+  @media only screen and (max-width: 600px) {
+  .gdc-hero-image-text__text.section--{{ section.id }} h2 {
+    font-size: 30px;
+  }
+
+  .gdc-hero-image-text__text.section--{{ section.id }} h3 {
+    font-size: 24px;
+  }
+
+  .gdc-hero-image-text__text.section--{{ section.id }} p {
+    font-size: 16px;
+  }
+}
+</style>
+
+
+   

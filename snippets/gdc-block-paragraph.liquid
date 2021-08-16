@@ -1,0 +1,42 @@
+{%- assign bs = block.settings -%}
+
+<div class="gdc-block__paragraph-wrapper block--{{ block.id }} {{ hide_mobile }} {{ hide_tablets }}">
+  <div class="gdc-block__paragraph block--{{ block.id }}">
+    {% if bs.title != blank %}
+      <h2>{{ bs.title }}</h2>
+    {% endif %}
+    {% if bs.subtitle != blank %}
+      <h5>{{ bs.subtitle }}</h5>
+    {% endif %}
+    {% if bs.text != blank %}
+      {{ bs.text }}
+    {% endif %}
+  </div>
+</div>
+
+<style>
+  .gdc-block__paragraph-wrapper.block--{{ block.id }} {
+    margin-top: {{ bs.t_margin }}px;
+    margin-bottom: {{ bs.b_margin }}px;
+    padding-top: {{ bs.t_padding }}px;
+    padding-bottom: {{ bs.b_padding }}px;
+    background-color: {{ bs.bg_color }};
+  }
+
+  .gdc-block__paragraph.block--{{ section.id }} h5,
+  .gdc-block__paragraph.block--{{ section.id }} h2 {
+    color: {{ bs.font_color }};
+    text-align: {{ bs.text_align }};
+    margin: 0;
+    margin-bottom: 5px;
+  }
+
+  .gdc-block__paragraph.section--{{ section.id }} h5 {
+    font-size: {{ bs.subtitle_size }}px;
+  }
+
+  .gdc-block__paragraph.block--{{ block.id }} p {
+    color: {{ bs.font_color }};
+    text-align: {{ bs.text_align }};
+  }
+</style>

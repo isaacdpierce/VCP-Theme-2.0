@@ -1,0 +1,180 @@
+{%- assign ss = section.settings -%}
+
+<section class="gdc-shapes__wrapper section--{{ section.id }}">
+
+  <div class="gdc-shapes__row section--{{ section.id }}">
+    {% for block in section.blocks %}
+      {% if block.type == "shape" %}
+      <div class="gdc-shape block--{{ block.id }}"></div>
+      <style>
+        .gdc-shape.block--{{ block.id }} {
+          width: {{ block.settings.width }}px;
+          height: {{ block.settings.height }}px;
+          background-color: {{ block.settings.bg_color }};
+          margin-right: {{ ss.spacer }}px;
+          border-radius: {{ block.settings.border_radius }}px;
+          display: inline-block;
+          transform: rotate({{ block.settings.rotate }}deg);
+        }
+        </style>
+        {% endif %}
+      {% endfor %}
+      
+    </div>
+</section>
+
+<style>
+  .gdc-shapes__wrapper.section--{{ section.id }} {
+    margin-top: {{ ss.t_margin }}px;
+    margin-bottom: {{ ss.b_margin }}px;
+    padding-top: {{ ss.t_padding }}px;
+    padding-bottom: {{ ss.b_padding }}px;
+    background-color: {{ ss.bg_color }};
+  }
+
+  .gdc-shapes__row.section--{{ section.id }}  {
+    width: 100%;
+    display: flex;
+    transform: translateX({{ ss.h_position }}%);
+  }
+
+</style>
+
+{% schema %}
+  {
+    "name": "GDC: Shapes",    
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section Settings" 
+      },
+      {
+        "type": "range",
+        "id": "t_margin",
+        "label": "Section Top margin",
+        "default": 0,
+        "min": 0,
+        "max": 200,
+        "step": 10,
+        "unit": "px" 
+      },
+      {
+        "type": "range",
+        "id": "b_margin",
+        "label": "Section Bottom margin",
+        "default": 0,
+        "min": 0,
+        "max": 200,
+        "step": 10,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "t_padding",
+        "label": "Section Top padding",
+        "default": 0,
+        "min": 0,
+        "max": 200,
+        "step": 10,
+        "unit": "px" 
+      },
+      {
+        "type": "range",
+        "id": "b_padding",
+        "label": "Section Bottom padding",
+        "default": 0,
+        "min": 0,
+        "max": 200,
+        "step": 10,
+        "unit": "px"
+      },
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background Color",
+        "default": "#ededed"
+      },
+      {
+        "type": "range",
+        "id": "h_position",
+        "label": "Horizontal Position",
+        "default": 0,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%" 
+      },
+      {
+        "type": "range",
+        "id": "spacer",
+        "label": "Space between shapes",
+        "default": 5,
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "unit": "px" 
+      }
+    ],
+    "blocks": [
+      {
+        "type": "shape",
+        "name": "Shape",
+        "settings": [
+          {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Background Color",
+            "default": "#297F96"
+          },
+          {
+            "type": "range",
+            "id": "width",
+            "label": "Shape Width",
+            "default": 40,
+            "min": 10,
+            "max": 200,
+            "step": 2,
+            "unit": "px" 
+          },
+          {
+            "type": "range",
+            "id": "height",
+            "label": "Shape Height",
+            "default": 40,
+            "min": 10,
+            "max": 200,
+            "step": 2,
+            "unit": "px" 
+          },
+          {
+            "type": "range",
+            "id": "border_radius",
+            "label": "Rounded Corners",
+            "default": 0,
+            "min": 0,
+            "max": 50,
+            "step": 1,
+            "unit": "px" 
+          },
+          {
+            "type": "range",
+            "id": "rotate",
+            "label": "Shape Rotate",
+            "default": 0,
+            "min": 0,
+            "max": 360,
+            "step": 5,
+            "unit": "px" 
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "GDC: Shapes",
+        "category": "GDC Custom Components",
+        "blocks": []
+      }
+    ]
+  }
+{% endschema %}

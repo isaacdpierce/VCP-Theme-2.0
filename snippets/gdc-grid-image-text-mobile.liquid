@@ -1,0 +1,237 @@
+{%- liquid
+  assign mobile_grid_gap = section.settings.grid_gap 
+  assign mobile_header_section = false
+
+  if section.settings.title != blank or section.settings.text != blank
+      assign mobile_header_section = true
+  endif
+-%}
+
+<section class="gdc-image-text-grid-mobile__section-wrapper section--{{ section.id }}">
+    <div class="gdc-image-text-grid-mobile__section section--{{ section.id }}">
+    {%  if mobile_header_section %}
+      <header>
+          {%  if section.settings.title != blank %}
+            <h2>{{ section.settings.title }}</h2>
+          {% endif %}
+          {%  if section.settings.text != blank %}
+            <p>{{ section.settings.text }}</p>
+          {% endif %}
+      </header>
+    {% endif %}
+
+      <div class="gdc-image-text-grid-mobile__wrapper section--{{ section.id }}">
+        {% for block in section.blocks %}
+          {% if block.settings.url != blank and block.settings.enable_btn == false %}
+          <a href="{{ block.settings.url }}" 
+              class="gdc-image-text-grid-mobile__item block--{{ block.id }} 
+              {% if block.settings.hide_tablets %}
+                hide-1000
+              {% endif %}
+              {% if block.settings.hide_phones %}
+                hide-600
+              {% endif %} 
+              no-link-animation" 
+              target="_blank">
+          {% endif %}
+
+            <div class="gdc-image-text-grid-mobile__item block--{{ block.id }} 
+            {% if block.settings.hide_tablets %}
+              hide-1000
+            {% endif %}
+            {% if block.settings.hide_phones %}
+              hide-600
+            {% endif %}
+            ">
+              <div class="gdc-image-text-grid-mobile__text block--{{ block.id }}">
+                <div>
+                  {% if block.settings.title != blank %}
+                    <h3>{{ block.settings.title }}</h3>
+                  {% endif %}
+                  {% if block.settings.subtitle != blank %}
+                    <h3>{{ block.settings.subtitle }}</h3>
+                  {% endif %}
+                  {% if block.settings.text != blank %}
+                    {{ block.settings.text }}
+                  {% endif %}
+                  {% if block.settings.enable_btn %}
+                    <a class="button gdc-grid-item__button" href="{{ block.settings.btn_url }}">{{ block.settings.btn_text }}</a>
+                  {% endif %}
+                </div>
+              </div>
+              {% if block.settings.image %}
+              <div class="gdc-image-text-grid-mobile__image block--{{ block.id }}">
+                <img
+                src="{{ block.settings.image | img_url: '500x' }}"
+                alt="{{ block.settings.image.alt }}"
+                width="{{ block.settings.image.width }}"
+                height="{{ block.settings.image.height }}"
+                loading="lazy"
+                >
+              </div>
+              {% endif %}
+              {% if block.settings.enable_text_overlay %}
+              <div class="gdc-image-text-grid-mobile__text-overlay block--{{ block.id }}">
+                <div>
+                  {% if block.settings.bottom_overlay_title != blank %}
+                    <h3>{{ block.settings.bottom_overlay_title }}</h3>
+                  {% endif %}
+                  {% if block.settings.bottom_overlay_text != blank %}
+                    {{ block.settings.bottom_overlay_text }}
+                  {% endif %}
+                </div>
+              </div>
+              {% endif %}
+            </div>
+            
+          {% if block.settings.url != blank and block.settings.enable_btn == false %}
+          </a>
+          {% endif %}
+          <style>
+          .gdc-image-text-grid-mobile__wrapper.section--{{ section.id }} a,
+          .gdc-image-text-grid-mobile__item.block--{{ block.id }},
+          .gdc-image-text-grid-mobile__item.block--{{ block.id }} h3, 
+          .gdc-image-text-grid-mobile__item.block--{{ block.id }} p {
+            color: {{ block.settings.font_color }};
+          }
+
+          .gdc-image-text-grid-mobile__item.block--{{ block.id }} p,
+          .gdc-image-text-grid-mobile__item.block--{{ block.id }} h3, 
+          .gdc-image-text-grid-mobile__item.block--{{ block.id }} h4 {
+            margin: 0;
+            margin-bottom: 5px;
+          } 
+
+          .gdc-image-text-grid-mobile__item.block--{{ block.id }} {
+            color: {{ block.settings.font_color }};
+
+            {% if block.settings.column_span > 1 %}
+              grid-column:  span 2;
+            {% endif %}
+            {% if block.settings.row_span > 1 %}
+              grid-row:  span 2;
+            {% endif %}
+
+            {% if section.settings.item_circle %}
+              border-radius: 50%;
+            {% else %}
+             border-radius: calc({{ section.settings.img_radius }}px / 2);
+            {% endif %} 
+          }
+
+          .gdc-image-text-grid-mobile__text.block--{{ block.id }} {
+            text-align: {{ block.settings.text_align }};
+            {% if block.settings.padding > 5 %}
+            padding: 5px;
+            {% endif %}
+            justify-content: {{ block.settings.text_v_place }};
+            align-items: {{ block.settings.text_h_place }};
+            {% if block.settings.overlay_opacity < 100 %}
+              background-color: {{ block.settings.overlay_color }}{{ block.settings.overlay_opacity }};
+            {% else %}
+              background-color: {{ block.settings.overlay_color }};
+            {% endif %};
+            transition: background-color .5s;
+          }
+
+          .gdc-image-text-grid-mobile__text.block--{{ block.id }}:hover {
+            {% if block.settings.overlay_hover_opacity < 100 %}
+              background-color: {{ block.settings.overlay_color }}{{ block.settings.overlay_hover_opacity }};
+            {% else %}
+              background-color: {{ block.settings.overlay_color }};
+            {% endif %};
+          }
+
+          .gdc-image-text-grid-mobile__text.block--{{ block.id }} h3 { 
+            font-size: {{ block.settings.mobile_title_font_size }}px;
+          }
+        
+          .gdc-image-text-grid-mobile__text.block--{{ block.id }} h4 { 
+            font-size: {{ block.settings.mobile_subtitle_font_size }}px;
+          }
+
+          .gdc-image-text-grid-mobile__text.block--{{ block.id }} p {  
+            font-size: {{ block.settings.mobile_font_size }}px;
+          }
+
+          .gdc-image-text-grid-mobile__text.block--{{ block.id }} .gdc-grid-item__button {
+            box-shadow: none;
+            color: {{ block.settings.button_text_color }};
+            {% if block.settings.button_style == "outline" %}
+            background-color: transparent;
+            border: 2px solid {{ block.settings.button_color }};
+            {% else %}
+            background-color: {{ block.settings.button_color }};
+            {% endif %}
+          }
+
+          .gdc-image-text-grid-mobile__image.block--{{ block.id }} img {
+            object-fit: {{ block.settings.image_fill }};
+            object-position: {{ block.settings.img_h_position }}% {{ block.settings.img_v_position }}%;
+          }
+
+          .gdc-image-text-grid-mobile__text-overlay.block--{{ block.id }} {
+            {% if block.settings.bottom_overlay_opacity < 100 %}
+              background-color: {{ block.settings.bottom_overlay_color }}{{ block.settings.bottom_overlay_opacity }};
+            {% else %}
+              background-color: {{ block.settings.bottom_overlay_color }};
+            {% endif %};
+            color: {{ block.settings.bottom_overlay_font_color }};
+            transition: background-color .5s;
+          }
+
+          .gdc-image-text-grid-mobile__text-overlay.block--{{ block.id }}:hover {
+            {% if block.settings.bottom_hover_opacity < 100 %}
+              background-color: {{ block.settings.bottom_overlay_color }}{{ block.settings.bottom_hover_opacity }};
+            {% else %}
+              background-color: {{ block.settings.bottom_overlay_color }};
+            {% endif %};
+          }
+
+          .gdc-image-text-grid-mobile__text-overlay.block--{{ block.id }} h3 {
+            font-size: {{ block.settings.bottom_title_size }}px;
+          }
+
+          .gdc-image-text-grid-mobile__text-overlay.block--{{ block.id }} p {
+            font-size: {{ block.settings.bottom_text_size }}px;
+          }
+          </style>
+        {% endfor %}
+      </div>
+    </div>
+</section>
+
+
+<style>
+  .gdc-image-text-grid-mobile__section-wrapper.section--{{ section.id }} {    
+    margin-top: {{ section.settings.t_margin }}px;
+    margin-bottom: {{ section.settings.b_margin }}px;
+    {% if section.settings.enable_bg_gradient %}
+      background: linear-gradient({{ section.settings.background_color }}, {{ section.settings.background_color_2 }});
+    {% else %}
+      background: {{ section.settings.background_color }};
+    {% endif %}
+  }
+
+  .gdc-image-text-grid-mobile__wrapper.section--{{ section.id }} {
+    {% if mobile_grid_gap > 5 %}
+    gap: 5px;
+    {% endif %}
+  }
+
+  .gdc-image-text-grid-mobile__section.section--{{ section.id }} {
+    color: {{ section.settings.font_color }};
+    padding-top: {{ section.settings.t_padding | divided_by: 2 }}px;
+    padding-bottom: {{ section.settings.b_padding | divided_by: 2 }}px;
+  }
+
+  .gdc-image-text-grid-mobile__section-wrapper.section--{{ section.id }} header {
+    text-align: {{ section.settings.text_align }};
+  }
+
+  @media only screen and (min-width: 800px) {  
+  .gdc-image-text-grid-mobile__section-wrapper.section--{{ section.id }} {
+    display: none;
+  }
+}
+</style>

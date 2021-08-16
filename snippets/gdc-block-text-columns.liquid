@@ -1,0 +1,76 @@
+{%- assign column_count = 0 -%}
+
+<div class="gdc-block__text-columns-section block--{{ block.id }} {{ hide_mobile }} {{ hide_tablets }}">
+  <div class="gdc-block__text-columns block--{{ block.id }}">
+    {% for i in (1..4) %}
+      {% capture titleNum %}title_{{ i }}{% endcapture %}
+      {% assign title = block.settings[titleNum] %}
+      {% capture textNum %}text_{{ i }}{% endcapture %}
+      {% assign text = block.settings[textNum] %}
+
+      {% if title != blank or text != blank %}
+        {% assign column_count = column_count | plus: 1 %}
+        <div class="gdc-block__text-column block--{{ block.id }}">
+          {% render 'gdc-block-paragraph', block: block, title: title, text: text %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  .gdc-block__text-columns-section.block--{{ block.id }} {
+    margin-top: {{ block.settings.t_margin }}px;
+    margin-bottom: {{ block.settings.b_margin }}px;
+    padding-top: {{ block.settings.t_padding }}px;
+    padding-bottom: {{ block.settings.b_padding }}px;
+  }
+  
+  .gdc-block__text-columns.block--{{ block.id }} {
+    background-color: {{ block.settings.bg_color }};
+  }
+
+  .gdc-block__text-columns.block--{{ block.id }} h2 {
+    color: {{ block.settings.font_color }};
+    text-align: {{ block.settings.title_align }};
+  }
+
+  .gdc-block__text-columns.block--{{ block.id }} p {
+    color: {{ block.settings.font_color }};
+    text-align: {{ block.settings.text_align }};
+  }
+
+  .gdc-block__text-column.block--{{ block.id }} {
+    width: calc(100% / {{ column_count }});
+  }
+
+  {% if column_count == 3 and block.settings.mobile_wrap == 'stack' %}
+      @media (max-width: 800px) {
+        .gdc-block__text-column.block--{{ block.id }} { 
+          width: 100%;
+        }
+      }
+  {% endif %}
+
+  {% if column_count == 4 %}
+    {% if block.settings.mobile_wrap == 'stack' %}
+      @media (max-width: 800px) {
+        .gdc-block__text-column.block--{{ block.id}} { 
+          width: 100%;
+        }
+      } 
+    {% else %}
+      @media (max-width: 800px) {
+        .gdc-block__text-column.block--{{ block.id}} { 
+          width: calc(100% /  2);
+        }
+      }
+
+      @media (max-width: 500px) {
+        .gdc-block__text-column.block--{{ block.id}} { 
+          width: 100%;
+        }
+      } 
+    {% endif %}
+  {% endif %}
+</style>

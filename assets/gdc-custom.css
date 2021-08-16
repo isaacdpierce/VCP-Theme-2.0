@@ -1,0 +1,858 @@
+/* ===================== LOGO LIST ======================= */
+
+.gdc-logo-list__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 0;
+}
+
+.gdc-logo-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 900px;
+  max-width: 90vw;
+}
+
+.gdc-logo-list__item {
+  padding: 10px;
+  text-align: center;
+  width: calc(100% / 4)
+}
+
+.gdc-logo-list__item h6 {
+  font-size: 20px;
+  letter-spacing: 2px;
+  text-transform: none;
+  margin: 0;
+}
+
+.gdc-logo-list__item a {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.gdc-logo-list__image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 200px;
+
+}
+
+.gdc-logo-list__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@media only screen and (max-width: 600px) {
+  .gdc-logo-list__item {
+    width: calc(100% / 2);
+  }
+}
+
+/* ============= GDC LOGO LIST SIMPLE ================= */
+
+.gdc-logo-list-simple {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.gdc-logo-list-simple__image-wrapper {
+  width: 250px;
+  min-width: 150px;
+}
+
+.gdc-logo-list-simple__image-wrapper img {
+  width: 100%;
+  padding: 0 20px;
+  object-fit: contain;
+}
+
+/* ============= GDC HERO IMAGE TEXT ================= */
+
+.gdc-logo-list__btn {
+  margin: 20px 0;
+}
+
+.gdc-logo-list__wrapper {
+  width: 90vw;
+}
+
+
+/* ============= GDC HERO IMAGE TEXT ================= */
+
+.gdc-hero-image-text__wrapper {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.gdc-hero-image-text__image {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.gdc-hero-image-text__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.gdc-hero-image-text__text-wrapper {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  width: 100%;
+  z-index: 2;
+}
+
+.gdc-hero-image-text__text {
+  display: inline-block;
+  min-width: 250px;
+  padding: 20px;
+}
+
+.gdc-hero-image-text__text p, 
+.gdc-hero-image-text__text h2, 
+.gdc-hero-image-text__text h3 {
+  margin: 0;
+  line-height: 1;
+}
+
+.gdc-hero-image-text__text h2, 
+.gdc-hero-image-text__text h3 {
+  margin-bottom: 30px;
+}
+
+.gdc-hero-image__button {
+  margin-top: 30px;
+}
+
+
+
+/* ============= HERO SPLIT ================= */
+
+.gdc-hero-split__section-wrapper {
+  display: flex;
+}
+
+.gdc-hero-split__side-wrapper {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 100%;
+  width: 50vw;
+  overflow: hidden;
+}
+
+
+.gdc-hero-split__image-wrapper {
+  grid-column: 1;
+  grid-row: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gdc-hero-split__image {
+  width: 100%;
+  height: 100%;
+}
+
+.gdc-hero-split__image--left img {
+  width: 100%;
+  height: 100%;
+}
+
+.gdc-hero-split__image--right img {
+  width: 100%;
+  height: 100%;
+}
+
+.gdc-hero-split__text-wrapper {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  z-index: 5;
+}
+
+.gdc-hero-split__text {
+  padding: 20px;
+  min-width: 150px;
+}
+
+.gdc-hero-split__text p,
+.gdc-hero-split__text h2,
+.gdc-hero-split__text h3 {
+  margin: 0;
+  line-height: 1;
+}
+
+.gdc-hero-split__text h2,
+.gdc-hero-split__text h3 {
+  margin-bottom: 10px;
+}
+
+.gdc-hero-split__btn {
+  margin-top: 20px;
+}
+
+@media only screen and (max-width: 800px) {
+  .gdc-hero-split__section-wrapper {
+    flex-direction: column;
+  }
+
+  .gdc-hero-split__side-wrapper {
+    width: 100vw;
+  }
+
+  .gdc-hero-split__image--right img,
+  .gdc-hero-split__image--left img {
+    object-position: 50% 50%;
+  }
+
+  .gdc-hero-split__text-wrapper {
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+  }
+
+  .gdc-hero-split__text {
+    max-width: 90vw;
+  }
+}
+
+/* =============== GDC Image Grid ========================== */
+
+.gdc-image-text-grid__section-wrapper {
+  overflow: hidden;
+  width: 100vw;
+}
+
+.gdc-image-text-grid__wrapper a {
+  text-decoration: none;
+}
+
+.gdc-image-text-grid__section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.gdc-image-text-grid__section-wrapper header {
+  width: 900px;
+  max-width: 90%;
+}
+
+.gdc-image-text-grid__wrapper {
+  display: grid;
+}
+
+.gdc-image-text-grid__item {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 100%;
+  overflow: hidden;
+}
+
+.gdc-image-text-grid__text {
+  grid-column: 1;
+  grid-row: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.gdc-image-text-grid__text p {
+  margin-bottom: 0;
+}
+
+.gdc-image-text-grid__text h3 {
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.gdc-image-text-grid__image {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.gdc-image-text-grid__image img {
+  width: 100%;
+  height: 100%;
+}
+
+.gdc-image-text-grid__text-overlay {
+  grid-column: 1;
+  grid-row: 1; 
+  display: flex;
+  align-items: center;
+  align-self: end;
+  padding: 10px;
+  width: 100%;
+  min-height: 30%;
+  z-index: 5;
+}
+
+.gdc-image-text-grid__text-overlay h3 {
+  font-size: 24px;
+  margin-bottom: 9px;
+}
+
+.gdc-image-text-grid__text-overlay p {
+  margin-bottom: 3px;
+}
+
+@media only screen and (max-width: 900px){
+  .gdc-hide-on-tablets {
+    display: none;
+  }
+}
+
+/* =============== GDC MOBILE Image Grid ========================== */
+
+
+
+.gdc-image-text-grid-mobile__wrapper {
+  grid-template-columns:  50vw 50vw;
+  grid-auto-rows: 50vw;
+}
+
+.gdc-image-text-grid-mobile__section-wrapper {
+  overflow: hidden;
+  width: 100vw;
+}
+
+.gdc-image-text-grid-mobile__section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.gdc-image-text-grid-mobile__section-wrapper header {
+  width: 900px;
+  max-width: 90%;
+}
+
+.gdc-image-text-grid-mobile__wrapper {
+  display: grid;
+}
+
+.gdc-image-text-grid-mobile__item {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 100%;
+  overflow: hidden;
+}
+
+.gdc-image-text-grid-mobile__text {
+  grid-column: 1;
+  grid-row: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+.gdc-image-text-grid-mobile__text p {
+  margin-bottom: 0;
+}
+
+.gdc-image-text-grid-mobile__text h3 {
+  margin-bottom: 10px;
+}
+
+.gdc-image-text-grid-mobile__image {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.gdc-image-text-grid-mobile__image img {
+  width: 100%;
+  height: 100%;
+}
+
+.gdc-image-text-grid-mobile__text-overlay {
+  grid-column: 1;
+  grid-row: 1; 
+  display: flex;
+  align-items: center;
+  align-self: end;
+  padding: 10px;
+  width: 100%;
+  min-height: 30%;
+  z-index: 5;
+}
+
+.gdc-image-text-grid-mobile__text-overlay h3 {
+  font-size: 24px;
+  margin-bottom: 9px;
+}
+
+.gdc-image-text-grid-mobile__text-overlay p {
+  margin-bottom: 3px;
+}
+
+@media screen and (max-width: 500px) {
+  .gdc-image-text-grid-mobile__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 5px;
+  }
+}
+
+
+/* ============= SECTION HEADER  ================= */
+.gdc-text-section__wrapper,
+.gdc-section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.gdc-section-header {
+  width: 940px;
+  max-width: 90vw;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} 
+
+.gdc-section-header__title {
+  display: inline-block;
+  padding-bottom: 20px;
+}
+
+.gdc-section-header p {
+  margin: 0;
+  margin-bottom: 40px;
+}
+
+/* ============= Text Blocks ================= */
+
+.gdc-text-blocks {
+  width: 940px;
+  max-width: 90vw;
+}
+
+/* ============= Paragraph Block ================= */
+
+.gdc-block__paragraph-section {
+  display: flex;
+  justify-content: center;
+}
+
+.gdc-block__paragraph,
+.gdc-block__title,
+.gdc-block__button {
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 100%;
+} 
+
+
+.gdc-block__title h2 {
+  display: inline-block; 
+  margin: 0;
+  line-height: 1; 
+}  
+
+.gdc-block__paragraph h2 {
+  margin: 10px 0;
+}
+
+.gdc-block__paragraph p {
+  margin: 0;
+} 
+
+/* ============= TEXT COLUMNS ================= */
+
+.gdc-block__text-columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.gdc-block__text-column {
+  min-width: 180px;
+}
+
+/* ============= BUTTON BLOCK  ================= */
+
+.gdc-block__button {
+  display: flex;
+}
+
+.gdc-block__button a {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.gdc-block__button a span {
+  cursor: pointer;
+}
+
+.gdc-button {
+  padding: 0.9rem 3rem 1.1rem;
+}
+
+.button-animation {
+  transition: all .3s ease-in-out;
+}
+
+/* ============= SIDE SCROLLER ================= */
+
+.gdc-side-scroller {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.gdc-side-scroller-text {
+  padding: 30px 0;
+  width: 100%;
+  text-align: center;
+}
+
+.gdc-row-scroller {
+  display: flex;
+  width: 100vw;
+  overflow-x: scroll;
+  scrollbar-width: thin;
+  scrollbar-color:#c0c0c0 rgba(0, 0, 0, 0.151);
+  -webkit-overflow-scrolling: touch;
+}
+
+.gdc-row-scroller::-webkit-scrollbar {
+  width: 1em;
+}
+
+.gdc-row-scroller::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 16px rgba(0, 0, 0, 0.151);
+}
+
+.gdc-row-scroller::-webkit-scrollbar-thumb {
+  position: relative;
+  background-color:#c0c0c0;
+  border-radius: 10px;
+}
+
+/* ============= IMAGE CARD ================= */
+
+.gdc-card__wrapper {
+  text-align: center;
+  margin: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gdc-card__image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.gdc-card__image img {
+  width: 100%;
+  height: 100%;
+}
+
+.gdc-card__wrapper h5 {
+  font-size: 16px;
+  text-transform: none;
+  margin: 0;
+}
+
+.gdc-card__wrapper p {
+  font-size: 14px;
+}
+
+.gdc-card__link-wrapper {
+  text-decoration: none;
+  color: currentColor;
+}
+
+/* ============= PRODUCT FILM INFO ================= */
+
+.gdc-product-film-info__wrapper {
+  margin: 0 !important;
+}
+
+.gdc-product-film-info__wrapper h2 {
+  font-size: 16px;
+}
+
+.gdc-product-film-info__section {
+  margin-bottom: 30px !important;
+}
+
+.gdc-product-film-info__section h4 {
+  margin-bottom: 10px !important;
+}
+
+.gdc-product-film-info__section a {
+  text-decoration: none;
+  color: currentColor;
+}
+
+.gdc-product-film-info__subtitle {
+  margin: 0;
+}
+
+.gdc-product-film-info__horizontal-list span,
+.gdc-product-film-info__horizontal-list a {
+  margin-right: 20px;
+  white-space: nowrap;
+}
+
+.gdc-product-film-info__wrapper ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.gdc-product-film-info__wrapper ul li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5px;
+  font-size: 14px;
+}
+
+.gdc-product-film-info__wrapper ul li:nth-child(odd) {
+  background-color: #EEEEEE;
+}
+
+.gdc-product-film-info:not(:last-child):after {
+  content: ','
+}
+
+/* ============= BIOGRAPHY COLLECTION ================= */
+
+.gdc-biography-collection__wrapper {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eeeeee;
+}
+
+.gdc-biography-collection__content {
+  display: flex;
+  margin: 0 auto;
+  width: 1200px;
+  max-width: 90vw;
+}
+
+.gdc-biography-collection__image {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 60px;
+}
+
+.gdc-biography-collection__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* ============= Hide for phones ================= */
+@media only screen and (max-width: 600px){
+  .hide-600 {
+    display: none !important;
+  }
+}
+
+/* ============= Hide for tablets ================= */
+@media only screen and (max-width: 1000px) {
+  .hide-1000 {
+    display: none !important;
+  }
+}
+
+/* ============== GDC PRODUCT FILM ===================== */
+
+.gdc-product__title {
+  margin: 0 !important;
+}
+
+
+/* ============== GDC HEADER ===================== */
+
+.gdc-search-form__wrapper {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40vw;
+}
+
+.gdc-search-input {
+  background-color: white;
+  border-radius: 50px !important;
+  box-shadow: none !important;
+}
+
+.gdc-search-input:focus,
+.gdc-search-input:focus-visible {
+  box-shadow: none !important;
+  outline: none !important;
+
+}
+
+/* ================= GDC BIOGRAPHY =============== */
+
+.gdc-biography {
+  background-color: #F2F2F2;
+  padding: 40px 0;
+}
+
+.gdc-biography__content h2 {
+  position: relative;
+  margin-top: 0;
+}
+
+.gdc-biography__content h2::before {
+  content: '';
+  background-color: #62CBDF;
+  display: inline-block;
+  height: 35px;
+  width: 5px;
+  position: absolute;
+  top: 0px;
+  left: -20px; 
+}
+
+/* ================= GDC CUSTOM OVERRIDES =============== */
+
+.gdc-header__inline-menu {
+  position: relative;
+  margin-top: 0 !important;
+}
+
+.gdc-header__inline-menu::before {
+  content: '';
+  position: absolute;
+  width: calc(100% + 20px);
+  height: 1px;
+  top: 0; 
+  left: -10px;
+}
+
+
+
+.gdc-header {
+  position: relative;
+  background-color: transparent !important;
+  padding-top: 10px !important;
+}
+
+.gdc-page-width {
+  max-width: 90vw;
+  margin: 0 auto;
+}
+
+
+/* ============= GLOBAL SETTINGS ================= */
+
+.gdc-section-header,
+.gdc-section-header--center {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.gdc-section-header--center {
+  text-align: center;
+}
+
+.gdc-text__full-width {
+  width: 900px;
+  max-width: 90vw;
+  margin: 0 auto;
+}
+
+.gdc-centered-row {
+  display: flex;
+  justify-content: center; 
+}
+
+.gdc-header__menu-item, 
+.gdc-header__menu-item a {
+  text-decoration: none;
+}
+
+
+.gdc-main {
+  overflow-x: hidden;
+}
+
+.gdc-text-w900-max90 {
+  width: 900px;
+  max-width: 90vw;
+}
+
+
+/* ========= SIMPLE SQUARES =========== */
+
+.gdc-squares-row {
+  display: flex;
+  width: 100%;
+  padding: 0 5vw;
+}
+
+.gdc-square {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+}
+
+.gdc-square:not(:last-of-type) {
+  margin-right: 5px;
+}
+
+.gdc-square:nth-of-type(3) {
+  background-color: #297F96;
+}
+.gdc-square:nth-of-type(2) {
+  background-color: #72C5DA;
+}
+.gdc-square:nth-of-type(1) {
+  background-color: #DAF1F4;
+}
+
+
+/* ========== Theme Overrides ============ */
+/* ====================================== */
+
+/* ============= Custom form ============ */
+.gdc-field__input {
+  padding: 0 10px 0 10px!important;
+  color: rgb(131, 131, 131) !important;
+}
+
+/* ========== Rounded Edges ============ */
+.card__inner {
+  border-radius: 10px !important;
+  overflow: hidden !important;
+}

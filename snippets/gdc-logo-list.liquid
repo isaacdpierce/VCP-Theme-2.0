@@ -1,0 +1,50 @@
+<section class="gdc-logo-list__wrapper 
+                gdc-logo-list--{{ section.id }} 
+                color-{{ section.settings.color_scheme }}
+                {% if section.settings.hide_mobile %}
+                hide-600
+                {% endif %}
+                ">
+  {%- if section.settings.title != blank -%}
+    <div>
+      <h2>{{ section.settings.title | escape }}</h2>
+    </div>
+  {%- endif -%}
+
+  {%- if section.blocks.size > 0 -%}
+    <div class="gdc-logo-list">
+      {%- for block in section.blocks -%}
+        <div class="gdc-logo-list__item" {{ block.shopify_attributes }}> 
+
+          {%- if block.settings.image != blank -%}
+            {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+            <div class="gdc-logo-list__image">
+              <img srcset="{%- if block.settings.image.width >= 165 -%}{{ block.settings.image | img_url: '165x' }} 165w,{%- endif -%} 
+              {%- if block.settings.image.width >= 360 -%}{{ block.settings.image | img_url: '360x' }} 360w,{%- endif -%}
+              {%- if block.settings.image.width >= 535 -%}{{ block.settings.image | img_url: '535x' }} 535w,{%- endif -%}
+              {%- if block.settings.image.width >= 720 -%}{{ block.settings.image | img_url: '720x' }} 720w,{%- endif -%}
+              {%- if block.settings.image.width >= 940 -%}{{ block.settings.image | img_url: '940x' }} 940w,{%- endif -%}
+              {%- if block.settings.image.width >= 1070 -%}{{ block.settings.image | img_url: '1070x' }} 1070w{%- endif -%}"
+              src="{{ block.settings.image | img_url: '533x' }}"
+              sizes="(min-width: 1100px) 535px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+              alt="{{ block.settings.image.alt | escape }}"
+              loading="lazy"
+              width="{{ block.settings.image.width }}"
+              height="{{ block.settings.image.height }}"
+            >
+            </div>
+          {%- else -%}
+            {{ 'logo' | placeholder_svg_tag: 'placeholder-svg' }} 
+          {%- endif -%}
+          {%- if block.settings.logo_title != blank -%}
+            <h6 class="h6">{{ block.settings.logo_title }}</h6>
+          {%- endif -%}
+
+          {%- if block.settings.link_text != blank -%}
+            <a class="link link--text" href="{{ block.settings.link }}">{{ block.settings.link_text }}</a>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</section>

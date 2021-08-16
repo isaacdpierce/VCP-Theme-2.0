@@ -1,0 +1,34 @@
+<div class="gdc-text-blocks">
+  {%- for block in section.blocks -%}
+      {%- liquid
+        assign hide_tablets = ""
+        assign hide_mobile = ""
+        assign title = block.settings.title
+        assign text = block.settings.text
+      
+        if block.settings.hide_tablets
+          assign hide_tablets = "hide-1000"
+        endif
+      
+        if block.settings.hide_mobile
+          assign hide_mobile = "hide-600" 
+        endif
+
+        case block.type
+        
+          when 'paragraph'
+            render 'gdc-block-paragraph', block: block, title: title, text: text, hide_mobile: hide_mobile, hide_tablets: hide_tablets
+          
+          when 'text-columns'
+            render 'gdc-block-text-columns', block: block, hide_mobile: hide_mobile, hide_tablets: hide_tablets
+
+          when 'title'
+            render 'gdc-block-title', block: block, hide_mobile: hide_mobile, hide_tablets: hide_tablets
+
+          when 'button'
+            render 'gdc-block-button', block: block, hide_mobile: hide_mobile, hide_tablets: hide_tablets
+          
+        endcase
+      -%}
+  {%- endfor -%}
+</div> 

@@ -1,0 +1,51 @@
+{%- assign header_font = block.settings.title_font -%}
+
+<div class="gdc-block__title block--{{ block.id }} {{ hide_mobile }} {{ hide_tablets }}">
+  <h2>{{ block.settings.title }}</h2>
+</div>
+
+<style>
+  {{ header_font | font_face }}
+
+  .gdc-block__title.block--{{ block.id }} {
+    margin-top: {{ block.settings.t_margin }}px;
+    margin-bottom: {{ block.settings.b_margin }}px; 
+    padding-top: {{ block.settings.t_padding }}px;
+    padding-bottom: {{ block.settings.b_padding }}px;
+    background-color: {{ block.settings.bg_color }};
+    text-align: {{ block.settings.title_align }}; 
+  }
+
+  .gdc-block__title.block--{{ block.id }} h2 {
+    padding: {{ block.settings.text_v_padding }}px {{ block.settings.text_h_padding }}px;
+    {% if block.settings.border_all %}
+
+    border: {{ block.settings.border_size }}px solid {{ block.settings.border_color }};
+
+    {% else %}
+
+      {% if block.settings.border_top %}
+      border-top: {{ block.settings.border_size }}px solid {{ block.settings.border_color }};
+      {% endif %}
+      {% if block.settings.border_bottom %}
+      border-bottom: {{ block.settings.border_size }}px solid {{ block.settings.border_color }};
+      {% endif %}
+      {% if block.settings.border_left %}
+      border-left: {{ block.settings.border_size }}px solid {{ block.settings.border_color }};
+      {% endif %}
+      {% if block.settings.border_right %}
+      border-right: {{ block.settings.border_size }}px solid {{ block.settings.border_color }};
+      {% endif %}
+
+    {% endif %}
+    {% if block.settings.use_custom_font %}
+    font-family: {{ header_font.family }};
+    {% endif %}
+    color: {{ block.settings.font_color }}; 
+    font-size: {{ block.settings.font_size }}px; 
+
+    {% render 'gdc-css-text-shadows' block: block %}
+    
+  }
+  
+</style>
