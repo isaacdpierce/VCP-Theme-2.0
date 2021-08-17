@@ -1,5 +1,46 @@
 {
   "sections": {
+    "1629203923a495f1f4": {
+      "type": "gdc-multimedia-slideshow",
+      "blocks": {
+        "3feb4dfd-ec6b-4de9-9a10-ef5a0f882d02": {
+          "type": "slide_video",
+          "settings": {
+            "iframe": "<iframe src=\"https:\/\/www.youtube.com\/embed\/biWk-QLWY7U?controls=0&amp;showinfo=0&amp;rel=0&amp;autoplay=1&amp;loop=1&amp;mute=1\" frameborder=\"0\" allowfullscreen=\"\"><\/iframe>",
+            "opacity": 1,
+            "url": "",
+            "bg_color": "",
+            "title": "Title",
+            "title_size": 24,
+            "text": "<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.<\/p>",
+            "text_width": 900,
+            "text_margin": 0,
+            "text_shadow": false,
+            "text_color": "",
+            "text_bg_color": "#111111",
+            "text_bg": "none",
+            "text_h_position": "center",
+            "text_v_position": "center",
+            "btn_text": "Button",
+            "btn_color": "",
+            "btn_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "3feb4dfd-ec6b-4de9-9a10-ef5a0f882d02"
+      ],
+      "settings": {
+        "t_margin": 0,
+        "b_margin": 0,
+        "t_padding": 0,
+        "b_padding": 0,
+        "title": "Slideshow Title",
+        "slide_height": 500,
+        "slide_width": 100,
+        "bg_color": "#ffffff"
+      }
+    },
     "featured_products": {
       "type": "featured-collection",
       "settings": {
@@ -53,52 +94,11 @@
         "color_scheme": "background-1",
         "layout": "image_first"
       }
-    },
-    "1629203923a495f1f4": {
-      "type": "gdc-multimedia-slideshow",
-      "blocks": {
-        "3feb4dfd-ec6b-4de9-9a10-ef5a0f882d02": {
-          "type": "slide_video",
-          "settings": {
-            "iframe": "<iframe src=\"https:\/\/www.youtube.com\/embed\/biWk-QLWY7U?controls=0&amp;showinfo=0&amp;rel=0&amp;autoplay=1&amp;loop=1&amp;mute=1\" frameborder=\"0\" allowfullscreen=\"\"><\/iframe>",
-            "opacity": 1,
-            "url": "",
-            "bg_color": "",
-            "title": "Title",
-            "title_size": 24,
-            "text": "<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.<\/p>",
-            "text_width": 900,
-            "text_margin": 0,
-            "text_shadow": false,
-            "text_color": "",
-            "text_bg_color": "#111111",
-            "text_bg": "none",
-            "text_h_position": "center",
-            "text_v_position": "center",
-            "btn_text": "Button",
-            "btn_color": "",
-            "btn_text_color": ""
-          }
-        }
-      },
-      "block_order": [
-        "3feb4dfd-ec6b-4de9-9a10-ef5a0f882d02"
-      ],
-      "settings": {
-        "t_margin": 0,
-        "b_margin": 0,
-        "t_padding": 0,
-        "b_padding": 0,
-        "title": "Slideshow Title",
-        "slide_height": 300,
-        "slide_width": 100,
-        "bg_color": "#ffffff"
-      }
     }
   },
   "order": [
+    "1629203923a495f1f4",
     "featured_products",
-    "image_text",
-    "1629203923a495f1f4"
+    "image_text"
   ]
 }
