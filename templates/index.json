@@ -1,37 +1,5 @@
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Talk about your brand"
-          }
-        },
-        "button": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify:\/\/collections\/all",
-            "button_style_secondary_1": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "button"
-      ],
-      "settings": {
-        "desktop_text_box_position": "flex-end",
-        "color_scheme": "background-1",
-        "stack_images_on_mobile": true,
-        "adapt_height_first_image": false
-      }
-    },
     "featured_products": {
       "type": "featured-collection",
       "settings": {
@@ -40,6 +8,7 @@
         "products_to_show": 4,
         "show_view_all": true,
         "swipe_on_mobile": false,
+        "show_price": true,
         "image_ratio": "adapt",
         "show_secondary_image": false,
         "add_image_padding": false,
@@ -65,7 +34,9 @@
           "type": "button",
           "settings": {
             "button_label": "Button label",
-            "button_link": ""
+            "button_link": "",
+            "btn_color": "",
+            "btn_text_color": ""
           }
         }
       },
@@ -75,16 +46,59 @@
         "button"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/sun-setting-over-ocean.jpg",
         "height": "adapt",
+        "border_radius": 0,
+        "align_content": "left",
+        "align_content_mobile": "left",
         "color_scheme": "background-1",
         "layout": "image_first"
+      }
+    },
+    "1629203923a495f1f4": {
+      "type": "gdc-multimedia-slideshow",
+      "blocks": {
+        "3feb4dfd-ec6b-4de9-9a10-ef5a0f882d02": {
+          "type": "slide_video",
+          "settings": {
+            "iframe": "<iframe src=\"https:\/\/www.youtube.com\/embed\/biWk-QLWY7U?controls=0&amp;showinfo=0&amp;rel=0&amp;autoplay=1&amp;loop=1&amp;mute=1\" frameborder=\"0\" allowfullscreen=\"\"><\/iframe>",
+            "opacity": 1,
+            "url": "",
+            "bg_color": "",
+            "title": "Title",
+            "title_size": 24,
+            "text": "<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.<\/p>",
+            "text_width": 900,
+            "text_margin": 0,
+            "text_shadow": false,
+            "text_color": "",
+            "text_bg_color": "#111111",
+            "text_bg": "none",
+            "text_h_position": "center",
+            "text_v_position": "center",
+            "btn_text": "Button",
+            "btn_color": "",
+            "btn_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "3feb4dfd-ec6b-4de9-9a10-ef5a0f882d02"
+      ],
+      "settings": {
+        "t_margin": 0,
+        "b_margin": 0,
+        "t_padding": 0,
+        "b_padding": 0,
+        "title": "Slideshow Title",
+        "slide_height": 300,
+        "slide_width": 100,
+        "bg_color": "#ffffff"
       }
     }
   },
   "order": [
-    "image_banner",
     "featured_products",
-    "image_text"
+    "image_text",
+    "1629203923a495f1f4"
   ]
 }
